@@ -3,6 +3,8 @@
  */
 package com.mycompany.library.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class LibraryController {
 
 	@GetMapping(value = "/addBooksToLibrary")
-	public String addBooksToLibrary() {
-		return "All Books";
+	public ResponseEntity<String> addBooksToLibrary() {
+		 return new ResponseEntity<>("Added Books", HttpStatus.OK);
 	}
 
 }
