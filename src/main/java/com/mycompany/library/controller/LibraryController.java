@@ -3,8 +3,12 @@
  */
 package com.mycompany.library.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mycompany.library.model.Book;
 
 /**
  * @author Ashutosh
@@ -13,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController(value = "/library")
 public class LibraryController {
 
-	@GetMapping(value = "/addBooksToLibrary")
-	public String addBooksToLibrary() {
-		return "All Books";
+	@PostMapping(value = "/addBooks")
+	public ResponseEntity<Book> addBooksToLibrary(Book book) {
+		
+		//libraryService.addBook(book);
+		return (ResponseEntity<Book>) new ResponseEntity<>(HttpStatus.OK).getBody();
 	}
 
 }
