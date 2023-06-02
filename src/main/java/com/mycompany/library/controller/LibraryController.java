@@ -3,6 +3,8 @@
  */
 package com.mycompany.library.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,16 @@ public class LibraryController {
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value = "/getAllBooks")
+	public ResponseEntity<List<Book>> getAllBooks(String name){
+		
+		List<Book> booksList = libraryService.getAllBooks(name);
+		if(!booksList.isEmpty())
+			return new ResponseEntity<>(booksList, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
 	}
 
 }
