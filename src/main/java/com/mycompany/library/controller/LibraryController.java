@@ -67,9 +67,4 @@ public class LibraryController {
 			return new ResponseEntity<Optional>(HttpStatus.NOT_FOUND);
 	}
 
-	@RequestMapping(path="/{name}/{age}")
-	public String getMessage(@PathVariable("age") String age, @PathVariable("name") String name) {
-		var msg = String.format("%s is %s", name, age);
-		return msg;
-	}
 }
