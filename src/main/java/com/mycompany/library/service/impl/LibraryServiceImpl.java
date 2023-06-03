@@ -19,13 +19,18 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Book getBookByName(String name) {
+	public Book findBookByName(String name) {
 		return null;
 	}
 
 	@Override
 	public List<Book> getAllBooks(String name) {
 		return null;
+	}
+
+	@Override
+	public void deleteBookByName(String name) {
+		//to-do
 	}
 
 }

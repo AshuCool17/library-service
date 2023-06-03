@@ -15,8 +15,10 @@ public interface LibraryService {
 
 	Book addBookToLibrary(Book book);//add new book into library
 
-	Book getBookByName(String name);//retrieve book by book name
+	Book findBookByName(String name);//retrieve book by book name
 
 	List<Book> getAllBooks(String name);//retrieve book by book name
+
+	void deleteBookByName(String name);//delete book by book names
 
 }

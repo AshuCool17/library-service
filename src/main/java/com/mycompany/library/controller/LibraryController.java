@@ -4,10 +4,12 @@
 package com.mycompany.library.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +34,10 @@ public class LibraryController {
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/getBookByName")
-	public ResponseEntity<Book> getBookByName(String name){
+	@GetMapping(value = "/findBookByName")
+	public ResponseEntity<Book> findBookByName(String name){
 		
-		Book book = libraryService.getBookByName(name);
+		Book book = libraryService.findBookByName(name);
 		if(null != book)
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		else
@@ -50,6 +52,17 @@ public class LibraryController {
 			return new ResponseEntity<>(booksList, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
+	}
+	
+	@DeleteMapping(value = "/deleteBook")
+	public ResponseEntity<Optional> deleteBook(String name){
+		
+		Book book = libraryService.findBookByName(name);
+		if(null != book) {
+			libraryService.deleteBookByName(name);
+			return new ResponseEntity<Optional>(HttpStatus.OK);
+		}else
+			return new ResponseEntity<Optional>(HttpStatus.NOT_FOUND);
 	}
 
 }
