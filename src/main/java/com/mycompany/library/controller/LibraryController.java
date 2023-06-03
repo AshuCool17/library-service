@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.library.model.Book;
@@ -54,8 +56,8 @@ public class LibraryController {
 			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
 	}
 	
-	@DeleteMapping(value = "/deleteBook")
-	public ResponseEntity<Optional> deleteBook(String name){
+	@DeleteMapping(value = "/deleteBookByName")
+	public ResponseEntity<Optional> deleteBookByName(String name){
 		
 		Book book = libraryService.findBookByName(name);
 		if(null != book) {
@@ -65,4 +67,9 @@ public class LibraryController {
 			return new ResponseEntity<Optional>(HttpStatus.NOT_FOUND);
 	}
 
+	@RequestMapping(path="/{name}/{age}")
+	public String getMessage(@PathVariable("age") String age, @PathVariable("name") String name) {
+		var msg = String.format("%s is %s", name, age);
+		return msg;
+	}
 }
