@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.library.model.Book;
@@ -30,14 +33,14 @@ public class LibraryController {
 	private LibraryService libraryService;
 
 	@PostMapping(value = "/addBook")
-	public ResponseEntity<Book> addBooksToLibrary(Book book) {
+	public ResponseEntity<Book> addBooksToLibrary(@RequestBody Book book) {
 		
 		libraryService.addBookToLibrary(book);
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/findBookByName")
-	public ResponseEntity<Book> findBookByName(String name){
+	public ResponseEntity<Book> findBookByName(@RequestParam(name = "name")String name){
 		
 		Book book = libraryService.findBookByName(name);
 		if(null != book)
@@ -47,7 +50,7 @@ public class LibraryController {
 	}
 	
 	@GetMapping(value = "/getAllBooks")
-	public ResponseEntity<List<Book>> getAllBooks(String name){
+	public ResponseEntity<List<Book>> getAllBooks(@RequestParam(name = "name")String name){
 		
 		List<Book> booksList = libraryService.getAllBooks(name);
 		if(!booksList.isEmpty())
@@ -57,7 +60,7 @@ public class LibraryController {
 	}
 	
 	@DeleteMapping(value = "/deleteBookByName")
-	public ResponseEntity<Optional> deleteBookByName(String name){
+	public ResponseEntity<Optional> deleteBookByName(@RequestParam(name = "name")String name){
 		
 		Book book = libraryService.findBookByName(name);
 		if(null != book) {
@@ -65,6 +68,17 @@ public class LibraryController {
 			return new ResponseEntity<Optional>(HttpStatus.OK);
 		}else
 			return new ResponseEntity<Optional>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PutMapping(value = "/updateBook")
+	public ResponseEntity<Book> updateBook(@RequestBody Book book){
+		
+		Book bookObj = libraryService.findBookByName(book.getBookName());
+		if(null != bookObj) {
+			libraryService.updateBookByName(book, bookObj.getBookName());
+			return new ResponseEntity<Book>(book, HttpStatus.OK);
+		}else
+			return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
 	}
 
 }

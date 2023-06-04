@@ -30,7 +30,11 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public void deleteBookByName(String name) {
-		//to-do
+	}
+
+	@Override
+	public Book updateBookByName(Book book, String bookName) {
+		return null;
 	}
 
 }

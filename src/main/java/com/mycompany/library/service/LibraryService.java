@@ -21,4 +21,6 @@ public interface LibraryService {
 
 	void deleteBookByName(String name);//delete book by book names
 
+	Book updateBookByName(Book book, String bookName);
+
 }
