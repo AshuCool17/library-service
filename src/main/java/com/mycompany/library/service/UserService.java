@@ -11,7 +11,9 @@ import com.mycompany.library.model.User;
  */
 public interface UserService {
 
-	void addUser(User user);
+	User addUser(User user);
+
+	void deleteUser(long id);
 
 	
 }

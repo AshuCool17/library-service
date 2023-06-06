@@ -16,8 +16,13 @@ import com.mycompany.library.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public void addUser(User user) {
+	public User addUser(User user) {
+		return null;
+	}
 
+	@Override
+	public void deleteUser(long id) {
+		
 	}
 
 }
