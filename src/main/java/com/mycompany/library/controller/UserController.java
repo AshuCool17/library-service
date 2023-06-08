@@ -28,21 +28,21 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping
+	@PostMapping(value = "/addUser")
 	public ResponseEntity<User> addUser(@RequestBody User user){
 		
 		User userObj = userService.addUser(user);
 		return new ResponseEntity<>(userObj, HttpStatus.OK);
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<Optional> deleteUser(@RequestParam long id){
+	@DeleteMapping(value = "/deleteUser")
+	public ResponseEntity<String> deleteUser(@RequestParam long id){
 		
 		userService.deleteUser(id);
-		return new ResponseEntity<Optional>(HttpStatus.OK);
+		return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
 	}
 	
-	@PutMapping
+	@PutMapping(value = "/updateUser")
 	public ResponseEntity<User> updateUser(@RequestBody User user){
 		
 		User userObj = userService.updateUser(user);

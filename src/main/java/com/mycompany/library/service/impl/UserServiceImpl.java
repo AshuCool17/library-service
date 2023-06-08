@@ -5,19 +5,22 @@ package com.mycompany.library.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.UserService;
 
 /**
- * @author 2066577
+ * @author Ashutosh
  *
  */
 @Service
 public class UserServiceImpl implements UserService {
-
+	
+	private UserDao userDao;
+	
 	@Override
 	public User addUser(User user) {
-		return null;
+		return userDao.save(user);
 	}
 
 	@Override
