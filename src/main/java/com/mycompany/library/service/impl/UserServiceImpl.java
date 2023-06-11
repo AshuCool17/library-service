@@ -3,6 +3,8 @@
  */
 package com.mycompany.library.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.mycompany.library.dao.UserDao;
@@ -31,6 +33,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateUser(User user) {
 		return null;
+	}
+
+	@Override
+	public Optional<User> getUserById(long id) {
+		return userDao.findById(id);
 	}
 
 }
