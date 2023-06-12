@@ -39,9 +39,13 @@ public class UserController {
 	@DeleteMapping(value = "/deleteUser")
 	public ResponseEntity<String> deleteUser(@RequestParam long id){
 		
-		//add code for find id then call delete
-		userService.deleteUser(id);
-		return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+		Optional<User> userObj = userService.getUserById(id);
+		if(userObj.isPresent()) {
+			userService.deleteUser(id);
+			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+		}else
+			return new ResponseEntity<>("Unable to find user record with id:" + id, HttpStatus.NOT_FOUND);
+		
 	}
 	
 	@PutMapping(value = "/updateUser")
