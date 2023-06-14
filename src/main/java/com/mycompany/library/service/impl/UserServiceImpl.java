@@ -3,6 +3,7 @@
  */
 package com.mycompany.library.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Optional<User> getUserById(long id) {
 		return userDao.findById(id);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return userDao.findAll();
 	}
 
 }

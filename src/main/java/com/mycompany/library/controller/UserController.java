@@ -3,6 +3,7 @@
  */
 package com.mycompany.library.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,13 @@ public class UserController {
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value = "/getAllUsers")
+	public ResponseEntity<List<User>> getAllUsers(){
+		
+		List<User> users = userService.getAllUsers();
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
 }
