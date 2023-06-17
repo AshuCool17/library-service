@@ -1,15 +1,19 @@
 package com.mycompany.library.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.mycompany.library.dao.LibraryDao;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.service.LibraryService;
 
 @Service
 public class LibraryServiceImpl implements LibraryService {
 
+	private LibraryDao libraryDao;
+	
 	/**
 	 * add new book into library
 	 */
@@ -19,8 +23,8 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Book findBookByName(String name) {
-		return null;
+	public Optional<Book> findBookById(Long id) {
+		return libraryDao.findById(id);
 	}
 
 	@Override
@@ -29,12 +33,8 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void deleteBookByName(String name) {
-	}
-
-	@Override
-	public Book updateBookByName(Book book, String bookName) {
-		return null;
+	public void deleteBookById(Long id) {
+		libraryDao.deleteById(id);
 	}
 
 }

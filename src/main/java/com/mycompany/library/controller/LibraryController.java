@@ -38,9 +38,9 @@ public class LibraryController {
 	}
 	
 	@GetMapping(value = "/findBookByName")
-	public ResponseEntity<Book> findBookByName(@RequestParam(name = "name")String name){
+	public ResponseEntity<Optional<Book>> findBookByName(@RequestParam(name = "id")Long id){
 		
-		Book book = libraryService.findBookByName(name);
+		Optional<Book> book = libraryService.findBookById(id);
 		if(null != book)
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		else
@@ -58,22 +58,22 @@ public class LibraryController {
 	}
 	
 	@DeleteMapping(value = "/deleteBookByName")
-	public ResponseEntity<Optional> deleteBookByName(@RequestParam(name = "name")String name){
+	public ResponseEntity<Optional<Book>> deleteBookByName(@RequestParam(name = "id")Long id){
 		
-		Book book = libraryService.findBookByName(name);
+		Optional<Book> book = libraryService.findBookById(id);
 		if(null != book) {
-			libraryService.deleteBookByName(name);
-			return new ResponseEntity<Optional>(HttpStatus.OK);
+			libraryService.deleteBookById(id);
+			return new ResponseEntity<>(book, HttpStatus.OK);
 		}else
-			return new ResponseEntity<Optional>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
 	}
 	
 	@PutMapping(value = "/updateBook")
 	public ResponseEntity<Book> updateBook(@RequestBody Book book){
 		
-		Book bookObj = libraryService.findBookByName(book.getBookName());
+		Optional<Book> bookObj = libraryService.findBookById(book.getBookId());
 		if(null != bookObj) {
-			libraryService.updateBookByName(book, bookObj.getBookName());
+			libraryService.addBookToLibrary(book);
 			return new ResponseEntity<Book>(book, HttpStatus.OK);
 		}else
 			return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
