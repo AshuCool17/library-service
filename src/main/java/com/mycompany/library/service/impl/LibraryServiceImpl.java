@@ -19,7 +19,7 @@ public class LibraryServiceImpl implements LibraryService {
 	 */
 	@Override
 	public Book addBookToLibrary(Book book) {
-		return null;
+		return libraryDao.save(book);
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public List<Book> getAllBooks(String name) {
-		return null;
+		return libraryDao.findAll();
 	}
 
 	@Override
