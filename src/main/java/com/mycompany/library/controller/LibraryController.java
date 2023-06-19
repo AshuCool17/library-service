@@ -37,7 +37,7 @@ public class LibraryController {
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/findBookByName")
+	@GetMapping(value = "/findBookById")
 	public ResponseEntity<Optional<Book>> findBookByName(@RequestParam(name = "id")Long id){
 		
 		Optional<Book> book = libraryService.findBookById(id);
@@ -57,7 +57,7 @@ public class LibraryController {
 			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
 	}
 	
-	@DeleteMapping(value = "/deleteBookByName")
+	@DeleteMapping(value = "/deleteBookById")
 	public ResponseEntity<Optional<Book>> deleteBookByName(@RequestParam(name = "id")Long id){
 		
 		Optional<Book> book = libraryService.findBookById(id);
