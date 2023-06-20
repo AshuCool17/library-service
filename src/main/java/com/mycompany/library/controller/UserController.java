@@ -50,10 +50,14 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/updateUser")
-	public ResponseEntity<User> updateUser(@RequestBody User user){
+	public ResponseEntity<String> updateUser(@RequestBody User user){
 		
-		User userObj = userService.updateUser(user);
-		return new ResponseEntity<>(userObj, HttpStatus.OK);
+		Optional<User> userObj = userService.getUserById(user.getId());
+		if(userObj.isPresent()) {
+			User updatedUser = userService.updateUser(user);
+			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+		}else
+			return new ResponseEntity<>("Unable to find user record with id:" + user.getId(), HttpStatus.NOT_FOUND);
 	}
 	
 	@GetMapping(value = "/getUserById")
