@@ -6,6 +6,8 @@ package com.mycompany.library.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +29,17 @@ import com.mycompany.library.service.UserService;
 @RestController(value = "/user")
 public class UserController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	private UserService userService;
 	
 	@PostMapping(value = "/addUser")
 	public ResponseEntity<User> addUser(@RequestBody User user){
 		
+		LOGGER.info("Adding user-->");
 		User userObj = userService.addUser(user);
+		LOGGER.info("User added succesfullt");
 		return new ResponseEntity<>(userObj, HttpStatus.OK);
 	}
 	
