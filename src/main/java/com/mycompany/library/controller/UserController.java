@@ -52,9 +52,10 @@ public class UserController {
 			userService.deleteUser(id);
 			LOGGER.info("User with user id -"+id+", deleted uccessfully");
 			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
-		}else
+		}else {
+			LOGGER.info("Unable to find user record with id:" + id);
 			return new ResponseEntity<>("Unable to find user record with id:" + id, HttpStatus.NOT_FOUND);
-		
+		}
 	}
 	
 	@PutMapping(value = "/updateUser")
