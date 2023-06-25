@@ -39,16 +39,18 @@ public class UserController {
 		
 		LOGGER.info("Adding user-->");
 		User userObj = userService.addUser(user);
-		LOGGER.info("User added succesfullt");
+		LOGGER.info("User with user id -"+user.getId()+", added succesfully");
 		return new ResponseEntity<>(userObj, HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/deleteUser")
 	public ResponseEntity<String> deleteUser(@RequestParam long id){
 		
+		LOGGER.info("Deleting user-->");
 		Optional<User> userObj = userService.getUserById(id);
 		if(userObj.isPresent()) {
 			userService.deleteUser(id);
+			LOGGER.info("User with user id -"+id+", deleted uccessfully");
 			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
 		}else
 			return new ResponseEntity<>("Unable to find user record with id:" + id, HttpStatus.NOT_FOUND);
