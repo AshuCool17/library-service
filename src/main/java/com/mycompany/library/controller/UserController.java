@@ -50,7 +50,7 @@ public class UserController {
 		Optional<User> userObj = userService.getUserById(id);
 		if(userObj.isPresent()) {
 			userService.deleteUser(id);
-			LOGGER.info("User with user id -"+id+", deleted uccessfully");
+			LOGGER.info("User with user id - "+id+", deleted uccessfully");
 			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
 		}else {
 			LOGGER.info("Unable to find user record with id:" + id);
@@ -61,12 +61,16 @@ public class UserController {
 	@PutMapping(value = "/updateUser")
 	public ResponseEntity<String> updateUser(@RequestBody User user){
 		
+		LOGGER.info("Updating user-->");
 		Optional<User> userObj = userService.getUserById(user.getId());
 		if(userObj.isPresent()) {
 			User updatedUser = userService.updateUser(user);
-			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
-		}else
+			LOGGER.info("User with user id - "+user.getId()+", updated uccessfully");
+			return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
+		}else {
+			LOGGER.info("Unable to find user record with id:" + user.getId());
 			return new ResponseEntity<>("Unable to find user record with id:" + user.getId(), HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping(value = "/getUserById")
