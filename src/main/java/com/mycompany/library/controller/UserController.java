@@ -90,7 +90,12 @@ public class UserController {
 	@GetMapping(value = "/getAllUsers")
 	public ResponseEntity<List<User>> getAllUsers(){
 		
+		LOGGER.info("Getting all users info-->");
 		List<User> users = userService.getAllUsers();
+		if(users.size() == 0)
+			LOGGER.info("No records found");
+		else
+			LOGGER.info("Successfully retrieved all users info");
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
