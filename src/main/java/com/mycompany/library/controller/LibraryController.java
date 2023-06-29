@@ -6,6 +6,8 @@ package com.mycompany.library.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +29,16 @@ import com.mycompany.library.service.LibraryService;
 @RestController(value = "/library")
 public class LibraryController {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LibraryController.class);
 	@Autowired
 	private LibraryService libraryService;
 
 	@PostMapping(value = "/addBook")
 	public ResponseEntity<Book> addBooksToLibrary(@RequestBody Book book) {
 		
+		LOGGER.info("Adding book-->");
 		libraryService.addBookToLibrary(book);
+		LOGGER.info("Book with book id - " +book.getBookId()+ ", added to library succesfully");
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	

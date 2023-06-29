@@ -23,6 +23,5 @@ public interface UserService {
 	Optional<User> getUserById(long id);
 
 	List<User> getAllUsers();
-
 	
 }
