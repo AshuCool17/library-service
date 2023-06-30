@@ -65,12 +65,16 @@ public class LibraryController {
 	@DeleteMapping(value = "/deleteBookById")
 	public ResponseEntity<Optional<Book>> deleteBookByName(@RequestParam(name = "id")Long id){
 		
+		LOGGER.info("Deleting book from library-->");
 		Optional<Book> book = libraryService.findBookById(id);
 		if(null != book) {
 			libraryService.deleteBookById(id);
+			LOGGER.info("Book with book id - "+id+", deleted uccessfully");
 			return new ResponseEntity<>(book, HttpStatus.OK);
-		}else
+		}else {
+			LOGGER.info("Unable to find book record with id:" + id);
 			return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PutMapping(value = "/updateBook")
