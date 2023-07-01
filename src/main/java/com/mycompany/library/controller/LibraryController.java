@@ -69,7 +69,7 @@ public class LibraryController {
 		Optional<Book> book = libraryService.findBookById(id);
 		if(null != book) {
 			libraryService.deleteBookById(id);
-			LOGGER.info("Book with book id - "+id+", deleted uccessfully");
+			LOGGER.info("Book with book id - "+id+", deleted successfully");
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		}else {
 			LOGGER.info("Unable to find book record with id:" + id);
@@ -80,12 +80,16 @@ public class LibraryController {
 	@PutMapping(value = "/updateBook")
 	public ResponseEntity<Book> updateBook(@RequestBody Book book){
 		
+		LOGGER.info("Updating book-->");
 		Optional<Book> bookObj = libraryService.findBookById(book.getBookId());
 		if(null != bookObj) {
 			libraryService.addBookToLibrary(book);
+			LOGGER.info("Book with book id - "+book.getBookId()+", updated successfully");
 			return new ResponseEntity<Book>(book, HttpStatus.OK);
-		}else
+		}else {
+			LOGGER.info("Unable to find book record with id:" + book.getBookId());
 			return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
+		}
 	}
 
 }
