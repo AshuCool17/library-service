@@ -45,11 +45,16 @@ public class LibraryController {
 	@GetMapping(value = "/findBookById")
 	public ResponseEntity<Optional<Book>> findBookByName(@RequestParam(name = "id")Long id){
 		
+		LOGGER.info("Retrieving book by name-->");
 		Optional<Book> book = libraryService.findBookById(id);
-		if(null != book)
+		if(null != book) {
+			LOGGER.info("Book with id " + id + " retrieved successfully");
 			return new ResponseEntity<>(book, HttpStatus.OK);
-		else
+		}
+		else {
+			LOGGER.info("Unable to find book record with id: " + id);
 			return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping(value = "/getAllBooks")
