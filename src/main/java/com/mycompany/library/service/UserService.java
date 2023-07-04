@@ -14,14 +14,14 @@ import com.mycompany.library.model.User;
  */
 public interface UserService {
 
-	User addUser(User user);
+	User addUser(User user);//add new user
 
-	void deleteUser(long id);
+	void deleteUser(long id);//delete user
 
-	User updateUser(User user);
+	User updateUser(User user);//update user
 
-	Optional<User> getUserById(long id);
+	Optional<User> getUserById(long id);//retrieve user details based upom id
 
-	List<User> getAllUsers();
+	List<User> getAllUsers();//retrieve all users
 	
 }
