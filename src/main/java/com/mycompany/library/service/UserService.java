@@ -20,7 +20,7 @@ public interface UserService {
 
 	User updateUser(User user);//update user
 
-	Optional<User> getUserById(long id);//retrieve user details based upom id
+	Optional<User> getUserById(long id);//retrieve user details based upon id
 
 	List<User> getAllUsers();//retrieve all users
 	

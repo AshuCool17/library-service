@@ -101,5 +101,12 @@ public class LibraryController {
 			return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@GetMapping(value = "/calculateFine")
+	public ResponseEntity<Double> calculateFine(@RequestParam long userId){
+		
+		Double fine = libraryService.calculateFine(userId);
+		return new ResponseEntity<>(fine, HttpStatus.OK);
+	}
 
 }
