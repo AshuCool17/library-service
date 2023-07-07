@@ -22,4 +22,6 @@ public interface LibraryService {
 
 	void deleteBookById(Long id);//delete book by book id
 
+	Double calculateFine(long userId);
+
 }

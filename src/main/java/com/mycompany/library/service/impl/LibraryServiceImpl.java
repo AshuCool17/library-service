@@ -37,4 +37,10 @@ public class LibraryServiceImpl implements LibraryService {
 		libraryDao.deleteById(id);
 	}
 
+	@Override
+	public Double calculateFine(long userId) {
+		return null;
+		//return libraryDao.calculateFine();
+	}
+
 }
