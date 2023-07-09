@@ -6,13 +6,17 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.library.dao.LibraryDao;
+import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.model.Book;
+import com.mycompany.library.model.User;
 import com.mycompany.library.service.LibraryService;
 
 @Service
 public class LibraryServiceImpl implements LibraryService {
 
 	private LibraryDao libraryDao;
+	
+	private UserDao userDao;
 	
 	/**
 	 * add new book into library
@@ -39,8 +43,8 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public Double calculateFine(long userId) {
-		return null;
-		//return libraryDao.calculateFine();
+		User user = userDao.getById(userId);//find the user by id
+		return user.getPenalty();//calculate penalty for the user
 	}
 
 }
