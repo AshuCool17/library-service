@@ -3,7 +3,7 @@
  */
 package com.mycompany.library.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +24,9 @@ public class User {
 	
 	private boolean isBookIssued;
 	
-	private Date issueDate;
+	private LocalDate issueDate;
 	
-	private Date returnDate;
+	private LocalDate returnDate;
 	
 	private double penalty;
 	

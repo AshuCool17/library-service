@@ -44,7 +44,10 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public Double calculateFine(long userId) {
 		User user = userDao.getById(userId);//find the user by id
+		if(user.getReturnDate().compareTo(user.getIssueDate()) == 0){
+			user.setPenalty(0.0d);
+		}
 		return user.getPenalty();//calculate penalty for the user
 	}
-
+	
 }
