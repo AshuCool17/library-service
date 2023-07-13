@@ -46,6 +46,10 @@ public class LibraryServiceImpl implements LibraryService {
 		User user = userDao.getById(userId);//find the user by id
 		if(user.getReturnDate().compareTo(user.getIssueDate()) == 0){
 			user.setPenalty(0.0d);
+		}else if(user.getReturnDate().compareTo(user.getIssueDate()) > 0){
+			user.setPenalty(10.0d);
+		}else if(user.getReturnDate().compareTo(user.getIssueDate()) < 0){
+			user.setPenalty(0.0d);
 		}
 		return user.getPenalty();//calculate penalty for the user
 	}
