@@ -3,8 +3,11 @@ package com.mycompany.library.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.library.controller.LibraryController;
 import com.mycompany.library.dao.LibraryDao;
 import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.model.Book;
@@ -13,6 +16,8 @@ import com.mycompany.library.service.LibraryService;
 
 @Service
 public class LibraryServiceImpl implements LibraryService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LibraryServiceImpl.class);
 
 	private LibraryDao libraryDao;
 	
@@ -43,6 +48,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public Double calculateFine(long userId) {
+		LOGGER.info("Calculating fine-->");
 		User user = userDao.getById(userId);//find the user by id
 		if(user.getReturnDate().compareTo(user.getIssueDate()) == 0){
 			user.setPenalty(0.0d);
