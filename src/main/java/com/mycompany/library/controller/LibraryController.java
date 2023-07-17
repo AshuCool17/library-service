@@ -105,6 +105,7 @@ public class LibraryController {
 	@GetMapping(value = "/calculateFine")
 	public ResponseEntity<Double> calculateFine(@RequestParam long userId){
 		
+		LOGGER.info("Calculating fine-->");
 		Double fine = libraryService.calculateFine(userId);
 		return new ResponseEntity<>(fine, HttpStatus.OK);
 	}
