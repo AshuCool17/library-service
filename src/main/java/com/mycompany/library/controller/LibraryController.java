@@ -107,7 +107,9 @@ public class LibraryController {
 		
 		LOGGER.info("Calculating fine-->");
 		Double fine = libraryService.calculateFine(userId);
-		return new ResponseEntity<>(fine, HttpStatus.OK);
+		if(fine == 0.0d)
+			return new ResponseEntity<>(fine, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(fine, HttpStatus.OK);
 	}
-
 }
