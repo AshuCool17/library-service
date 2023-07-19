@@ -107,8 +107,10 @@ public class LibraryController {
 		
 		LOGGER.info("Calculating fine-->");
 		Double fine = libraryService.calculateFine(userId);
-		if(fine == 0.0d)
+		if(fine == 0.0d) {
+			LOGGER.info("No pending dues");
 			return new ResponseEntity<>(fine, HttpStatus.OK);
+		}
 		else
 			return new ResponseEntity<>(fine, HttpStatus.OK);
 	}
