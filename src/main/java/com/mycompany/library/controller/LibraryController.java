@@ -38,7 +38,7 @@ public class LibraryController {
 		
 		LOGGER.info("Adding book-->");
 		libraryService.addBookToLibrary(book);
-		LOGGER.info("Book with book id - " +book.getBookId()+ ", added to library succesfully");
+		LOGGER.info("Book with book id - {}, added to library succesfully", book.getBookId());
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	
@@ -48,7 +48,7 @@ public class LibraryController {
 		LOGGER.info("Retrieving book by name-->");
 		Optional<Book> book = libraryService.findBookById(id);
 		if(null != book) {
-			LOGGER.info("Book with id " + id + " retrieved successfully");
+			LOGGER.info("Book with id {} retrieved successfully", id);
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		}
 		else {
