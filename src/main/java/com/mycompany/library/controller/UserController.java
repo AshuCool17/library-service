@@ -39,7 +39,7 @@ public class UserController {
 		
 		LOGGER.info("Adding user-->");
 		User userObj = userService.addUser(user);
-		LOGGER.info("User with user id -"+user.getId()+", added succesfully");
+		LOGGER.info("User with user id - {}, added succesfully", user.getId());
 		return new ResponseEntity<>(userObj, HttpStatus.OK);
 	}
 	
@@ -50,10 +50,10 @@ public class UserController {
 		Optional<User> userObj = userService.getUserById(id);
 		if(userObj.isPresent()) {
 			userService.deleteUser(id);
-			LOGGER.info("User with user id - "+id+", deleted uccessfully");
+			LOGGER.info("User with user id - {}, deleted successfully", id);
 			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
 		}else {
-			LOGGER.info("Unable to find user record with id:" + id);
+			LOGGER.info("Unable to find user record with id: {}", id);
 			return new ResponseEntity<>("Unable to find user record with id:" + id, HttpStatus.NOT_FOUND);
 		}
 	}
