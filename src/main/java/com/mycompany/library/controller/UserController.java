@@ -65,7 +65,7 @@ public class UserController {
 		Optional<User> userObj = userService.getUserById(user.getId());
 		if(userObj.isPresent()) {
 			User updatedUser = userService.updateUser(user);
-			LOGGER.info("User with user id - "+updatedUser.getId()+", updated uccessfully");
+			LOGGER.info("User with user id - {}, updated uccessfully", updatedUser.getId());
 			return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
 		}else {
 			LOGGER.info("Unable to find user record with id:" + user.getId());
@@ -79,10 +79,10 @@ public class UserController {
 		LOGGER.info("Getting user info-->");
 		Optional<User> userObj = userService.getUserById(id);
 		if(userObj.isPresent()) {
-			LOGGER.info("User details with user id - "+id+","+userObj);
+			LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
-			LOGGER.info("Unable to find user record with id:" + id);
+			LOGGER.info("Unable to find user record with id: {}", id);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
