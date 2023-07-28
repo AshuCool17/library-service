@@ -54,7 +54,7 @@ public class UserController {
 			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
 		}else {
 			LOGGER.info("Unable to find user record with id: {}", id);
-			return new ResponseEntity<>("Unable to find user record with id:" + id, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class UserController {
 			LOGGER.info("User with user id - {}, updated uccessfully", updatedUser.getId());
 			return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
 		}else {
-			LOGGER.info("Unable to find user record with id:" + user.getId());
+			LOGGER.info("Unable to find user record with id: {}" + user.getId());
 			return new ResponseEntity<>("Unable to find user record with id:" + user.getId(), HttpStatus.NOT_FOUND);
 		}
 	}
