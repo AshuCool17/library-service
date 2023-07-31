@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.library.model.Audit;
-import com.mycompany.library.model.User;
+import com.mycompany.library.service.AuditService;
 
 @RestController(value = "/audit")
 public class AuditController {
@@ -22,7 +22,7 @@ public class AuditController {
 	private AuditService auditService;
 	
 	@GetMapping(value = "/reports")
-	public ResponseEntity<List<User>> getAllUsers(){
+	public ResponseEntity<List<Audit>> getAllReports(){
 		
 		LOGGER.info("Getting all users info-->");
 		List<Audit> audits = auditService.getReports();
