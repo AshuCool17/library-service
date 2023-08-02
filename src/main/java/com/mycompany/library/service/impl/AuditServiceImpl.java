@@ -5,7 +5,7 @@ import java.util.List;
 import com.mycompany.library.model.Audit;
 import com.mycompany.library.service.AuditService;
 
-public class AuditServiceImple implements AuditService {
+public class AuditServiceImpl implements AuditService {
 
 	@Override
 	public List<Audit> getReports() {
