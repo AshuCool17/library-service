@@ -2,10 +2,13 @@ package com.mycompany.library.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.mycompany.library.dao.AuditDao;
 import com.mycompany.library.model.Audit;
 import com.mycompany.library.service.AuditService;
 
+@Service
 public class AuditServiceImpl implements AuditService {
 
 	private AuditDao auditDao;
