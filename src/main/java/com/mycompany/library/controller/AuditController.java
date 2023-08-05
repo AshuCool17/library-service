@@ -1,5 +1,6 @@
 package com.mycompany.library.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -24,8 +25,20 @@ public class AuditController {
 	@GetMapping(value = "/reports")
 	public ResponseEntity<List<Audit>> getAllReports(){
 		
-		LOGGER.info("Getting all users info-->");
+		LOGGER.info("Getting all reports info-->");
 		List<Audit> audits = auditService.getReports();
+		if(audits.size() == 0)
+			LOGGER.info("No records found");
+		else
+			LOGGER.info("Successfully retrieved all users info");
+		return new ResponseEntity<>(audits, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/reportsForTimeline")
+	public ResponseEntity<List<Audit>> getAllReportsForTimeline(Date startDate, Date endDate){
+		
+		LOGGER.info("Getting all reports info for timeline-->");
+		List<Audit> audits = auditService.getReportsForTimeline();
 		if(audits.size() == 0)
 			LOGGER.info("No records found");
 		else
