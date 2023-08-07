@@ -3,6 +3,7 @@
  */
 package com.mycompany.library.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.mycompany.library.model.Audit;
@@ -14,6 +15,8 @@ import com.mycompany.library.model.Audit;
 public interface AuditService {
 
 	List<Audit> getReports();
+
+	List<Audit> getReportsForTimeline(Date startDate, Date endDate);
 
 	
 }
