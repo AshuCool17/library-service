@@ -38,7 +38,7 @@ public class AuditController {
 	public ResponseEntity<List<Audit>> getAllReportsForTimeline(Date startDate, Date endDate){
 		
 		LOGGER.info("Getting all reports info for timeline-->");
-		List<Audit> audits = auditService.getReportsForTimeline();
+		List<Audit> audits = auditService.getReportsForTimeline(startDate, endDate);
 		if(audits.size() == 0)
 			LOGGER.info("No records found");
 		else
