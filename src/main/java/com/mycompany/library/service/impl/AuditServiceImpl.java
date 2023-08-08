@@ -1,5 +1,6 @@
 package com.mycompany.library.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class AuditServiceImpl implements AuditService {
 	@Override
 	public List<Audit> getReports() {
 		return auditDao.findAll();
+	}
+
+	@Override
+	public List<Audit> getReportsForTimeline(Date startDate, Date endDate) {
+		return null;
 	}
 
 }
