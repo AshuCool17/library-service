@@ -21,6 +21,7 @@ public class AuditServiceImpl implements AuditService {
 
 	@Override
 	public List<Audit> getReportsForTimeline(Date startDate, Date endDate) {
+		auditDao.find
 		return null;
 	}
 
