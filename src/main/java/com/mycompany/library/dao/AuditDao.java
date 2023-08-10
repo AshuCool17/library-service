@@ -21,5 +21,5 @@ import com.mycompany.library.model.Audit;
 public interface AuditDao extends JpaRepository<Audit, Long> {
 
 	@Query(value = "SELECT * FROM Audit WHERE LAST_UPDATED >= :startDate AND LAST_UPDATED <= :endDate", nativeQuery = true)
-	List<Audit> getAllBetweenDates(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
+	List<Audit> getReportsForTimeline(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 }
