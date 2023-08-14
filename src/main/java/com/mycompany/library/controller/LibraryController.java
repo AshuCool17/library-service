@@ -114,4 +114,19 @@ public class LibraryController {
 		else
 			return new ResponseEntity<>(fine, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/getCountOfAllBooks")
+	public ResponseEntity<List<Book>> getCountOfAllBooks(){
+		
+		LOGGER.info("Retrieving books count-->");
+		int count = libraryService.getCountOfAllBooks();
+		if(count == 0) {
+			LOGGER.info("No Books available");
+			return new ResponseEntity<>(booksList, HttpStatus.OK);
+		}
+		else {
+			LOGGER.info("Unable to find book records");
+			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
+		}
+	}
 }
