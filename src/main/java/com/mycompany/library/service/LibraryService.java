@@ -24,4 +24,6 @@ public interface LibraryService {
 
 	Double calculateFine(long userId);
 
+	Integer getCountOfAllBooks();//get count of books in the library
+
 }
