@@ -22,7 +22,7 @@ public interface LibraryService {
 
 	void deleteBookById(Long id);//delete book by book id
 
-	Double calculateFine(long userId);
+	Double calculateFine(long userId);//calculating fine for a particular user
 
 	Integer getCountOfAllBooks();//get count of books in the library
 
