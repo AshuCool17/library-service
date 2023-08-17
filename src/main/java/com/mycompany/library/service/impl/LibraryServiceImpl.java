@@ -59,5 +59,10 @@ public class LibraryServiceImpl implements LibraryService {
 		}
 		return user.getPenalty();//calculate penalty for the user
 	}
+
+	@Override
+	public Integer getCountOfAllBooks() {
+		return null;
+	}
 	
 }
