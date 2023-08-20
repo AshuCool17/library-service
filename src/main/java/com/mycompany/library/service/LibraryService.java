@@ -24,6 +24,6 @@ public interface LibraryService {
 
 	Double calculateFine(long userId);//calculating fine for a particular user
 
-	Long getCountOfAllBooks();//get count of books in the library
+	int getCountOfAllBooks();//get count of books in the library
 
 }
