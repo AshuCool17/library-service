@@ -128,4 +128,9 @@ public class LibraryController {
 			return new ResponseEntity<>(count, HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@PostMapping(value = "/issueBook")
+	public ResponseEntity<String> issueBook(){
+		
+	}
 }
