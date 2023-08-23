@@ -3,7 +3,7 @@
  */
 package com.mycompany.library.service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mycompany.library.model.Audit;
@@ -16,7 +16,7 @@ public interface AuditService {
 
 	List<Audit> getReports();
 
-	List<Audit> getReportsForTimeline(Date startDate, Date endDate);
+	List<Audit> getReportsForTimeline(LocalDateTime startDate, LocalDateTime endDate);
 
 	
 }
