@@ -1,5 +1,6 @@
 package com.mycompany.library.controller;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class AuditController {
 	}
 	
 	@GetMapping(value = "/reportsForTimeline")
-	public ResponseEntity<List<Audit>> getAllReportsForTimeline(Date startDate, Date endDate){
+	public ResponseEntity<List<Audit>> getAllReportsForTimeline(LocalDateTime startDate, LocalDateTime endDate){
 		
 		LOGGER.info("Getting all reports info for timeline-->");
 		List<Audit> audits = auditService.getReportsForTimeline(startDate, endDate);
