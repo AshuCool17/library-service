@@ -132,5 +132,6 @@ public class LibraryController {
 	@PostMapping(value = "/issueBook")
 	public ResponseEntity<String> issueBook(){
 		
+		LOGGER.info("Issuing book");
 	}
 }
