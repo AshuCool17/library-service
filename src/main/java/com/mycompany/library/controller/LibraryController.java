@@ -133,5 +133,6 @@ public class LibraryController {
 	public ResponseEntity<String> issueBook(){
 		
 		LOGGER.info("Issuing book");
+		return null;
 	}
 }
