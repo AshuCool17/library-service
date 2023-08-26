@@ -116,10 +116,10 @@ public class LibraryController {
 	}
 	
 	@GetMapping(value = "/getCountOfAllBooks")
-	public ResponseEntity<Integer> getCountOfAllBooks(){
+	public ResponseEntity<Long> getCountOfAllBooks(){
 		
 		LOGGER.info("Retrieving books count-->");
-		int count = libraryService.getCountOfAllBooks();
+		Long count = libraryService.getCountOfAllBooks();
 		if(count == 0) {
 			LOGGER.info("No Books available");
 			return new ResponseEntity<>(count, HttpStatus.OK);
@@ -133,6 +133,7 @@ public class LibraryController {
 	public ResponseEntity<String> issueBook(){
 		
 		LOGGER.info("Issuing book");
+		libraryService.issueBook();
 		return null;
 	}
 }
