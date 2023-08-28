@@ -66,9 +66,10 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void issueBook() {
+	public void issueBook(String name) {
 		Long countOfBooks = getCountOfAllBooks();
 		LOGGER.info("Total books -->" + countOfBooks);
+		
 		
 	}
 	
