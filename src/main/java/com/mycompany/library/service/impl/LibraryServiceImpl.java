@@ -64,5 +64,12 @@ public class LibraryServiceImpl implements LibraryService {
 	public Long getCountOfAllBooks() {
 		return libraryDao.count(); //
 	}
+
+	@Override
+	public void issueBook() {
+		Long countOfBooks = getCountOfAllBooks();
+		LOGGER.info("Total books -->" + countOfBooks);
+		
+	}
 	
 }
