@@ -26,6 +26,7 @@ public interface LibraryService {
 
 	Long getCountOfAllBooks();//get count of books in the library
 
-	void issueBook();//issue book to the student
+	void issueBook(String name);//issue book to the student
+
 
 }
