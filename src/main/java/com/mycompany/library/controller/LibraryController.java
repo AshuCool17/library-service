@@ -130,10 +130,10 @@ public class LibraryController {
 	}
 	
 	@PostMapping(value = "/issueBook")
-	public ResponseEntity<String> issueBook(){
+	public ResponseEntity<String> issueBook(String bookName){
 		
 		LOGGER.info("Issuing book");
-		libraryService.issueBook();
+		libraryService.issueBook(bookName);
 		return null;
 	}
 }
