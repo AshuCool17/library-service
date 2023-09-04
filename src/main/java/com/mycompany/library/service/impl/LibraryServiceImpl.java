@@ -69,7 +69,9 @@ public class LibraryServiceImpl implements LibraryService {
 	public void issueBook(String name) {
 		Long countOfBooks = getCountOfAllBooks();
 		LOGGER.info("Total books -->" + countOfBooks);
-		
+		if(countOfBooks > 0) {
+			issueBook(name);
+		}
 		
 	}
 	
