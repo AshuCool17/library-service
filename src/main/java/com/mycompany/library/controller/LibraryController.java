@@ -134,6 +134,6 @@ public class LibraryController {
 		
 		LOGGER.info("Issuing book");
 		libraryService.issueBook(bookName);
-		return null;
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
