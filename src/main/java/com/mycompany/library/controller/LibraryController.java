@@ -132,8 +132,9 @@ public class LibraryController {
 	@PostMapping(value = "/issueBook")
 	public ResponseEntity<String> issueBook(String bookName){
 		
-		LOGGER.info("Issuing book");
+		LOGGER.info("Issuing book API");
 		libraryService.issueBook(bookName);
 		return new ResponseEntity<>(HttpStatus.OK);
+		
 	}
 }
