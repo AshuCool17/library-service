@@ -71,6 +71,8 @@ public class LibraryServiceImpl implements LibraryService {
 		LOGGER.info("Total books -->" + countOfBooks);
 		if(countOfBooks > 0) {
 			issueBook(name);
+		}else {
+			LOGGER.info("No books in library");
 		}
 		
 	}
