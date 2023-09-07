@@ -15,4 +15,6 @@ import com.mycompany.library.model.Book;
 @Repository
 public interface LibraryDao extends JpaRepository<Book, Long> {
 
+	void issueBook(String name);
+
 }
