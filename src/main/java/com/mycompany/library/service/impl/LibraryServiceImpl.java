@@ -70,7 +70,12 @@ public class LibraryServiceImpl implements LibraryService {
 		Long countOfBooks = getCountOfAllBooks();
 		LOGGER.info("Total books -->" + countOfBooks);
 		if(countOfBooks > 0) {
-			libraryDao.issueBook(name);
+			List<Book> bookList = getAllBooks(name);
+			if(bookList.size() > 0) {
+				if(bookList.get(0).getBookName().equalsIgnoreCase(name))
+					libraryDao.issueBook(name);
+			}
+			
 		}else {
 			LOGGER.info("No books in library");
 		}
