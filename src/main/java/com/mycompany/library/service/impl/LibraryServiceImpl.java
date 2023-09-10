@@ -74,6 +74,8 @@ public class LibraryServiceImpl implements LibraryService {
 			if(bookList.size() > 0) {
 				if(bookList.get(0).getBookName().equalsIgnoreCase(name))
 					libraryDao.issueBook(name);
+			}else {
+				LOGGER.info("Currently, the book with the name " + name + "is unavailable in library");
 			}
 			
 		}else {
