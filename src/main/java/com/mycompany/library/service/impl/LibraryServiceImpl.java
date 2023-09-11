@@ -66,8 +66,9 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void issueBook(String name) {
+	public String issueBook(String name) {
 		Long countOfBooks = getCountOfAllBooks();
+		String msg = null;
 		LOGGER.info("Total books -->" + countOfBooks);
 		if(countOfBooks > 0) {
 			List<Book> bookList = getAllBooks(name);
@@ -76,10 +77,12 @@ public class LibraryServiceImpl implements LibraryService {
 					libraryDao.issueBook(name);
 			}else {
 				LOGGER.info("Currently, the book with the name " + name + "is unavailable in library");
+				msg = "Currently, the book with the name " + name + "is unavailable in library";
 			}
 			
 		}else {
 			LOGGER.info("No books in library");
+			msg = "No books in library";
 		}
 		
 	}
