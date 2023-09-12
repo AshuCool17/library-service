@@ -84,6 +84,7 @@ public class LibraryServiceImpl implements LibraryService {
 			LOGGER.info("No books in library");
 			msg = "No books in library";
 		}
+		return msg;
 		
 	}
 	
