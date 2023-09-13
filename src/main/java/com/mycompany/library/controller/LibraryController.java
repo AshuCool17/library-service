@@ -133,7 +133,8 @@ public class LibraryController {
 	public ResponseEntity<String> issueBook(String bookName){
 		
 		LOGGER.info("Issuing book API");
-		libraryService.issueBook(bookName);
+		String msg = libraryService.issueBook(bookName);
+		LOGGER.info(msg);
 		return new ResponseEntity<>(HttpStatus.OK);
 		
 	}
