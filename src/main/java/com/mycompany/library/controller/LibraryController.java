@@ -135,7 +135,7 @@ public class LibraryController {
 		LOGGER.info("Issuing book API");
 		String msg = libraryService.issueBook(bookName);
 		LOGGER.info(msg);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(msg, HttpStatus.OK);
 		
 	}
 }
