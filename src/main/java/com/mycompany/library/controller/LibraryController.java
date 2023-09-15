@@ -119,14 +119,20 @@ public class LibraryController {
 	public ResponseEntity<Long> getCountOfAllBooks(){
 		
 		LOGGER.info("Retrieving books count-->");
-		Long count = libraryService.getCountOfAllBooks();
-		if(count == 0) {
-			LOGGER.info("No Books available");
-			return new ResponseEntity<>(count, HttpStatus.OK);
+		
+		try{
+			Long count = libraryService.getCountOfAllBooks();
+			if(count == 0) {
+				LOGGER.info("No Books available");
+				return new ResponseEntity<>(count, HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity<>(count, HttpStatus.NOT_FOUND);
+			}
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
-		else {
-			return new ResponseEntity<>(count, HttpStatus.NOT_FOUND);
-		}
+		
 	}
 	
 	@PostMapping(value = "/issueBook")
@@ -134,7 +140,7 @@ public class LibraryController {
 		
 		LOGGER.info("Issuing book API");
 		String msg = libraryService.issueBook(bookName);
-		LOGGER.info(msg);
+		LOGGER.info("Issue Book response -> "+msg);
 		return new ResponseEntity<>(msg, HttpStatus.OK);
 		
 	}
