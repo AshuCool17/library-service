@@ -104,15 +104,19 @@ public class LibraryController {
 	
 	@GetMapping(value = "/calculateFine")
 	public ResponseEntity<Double> calculateFine(@RequestParam long userId){
-		
+
 		LOGGER.info("Calculating fine-->");
-		Double fine = libraryService.calculateFine(userId);
-		if(fine == 0.0d) {
-			LOGGER.info("No pending dues");
-			return new ResponseEntity<>(fine, HttpStatus.OK);
+		try{
+			Double fine = libraryService.calculateFine(userId);
+			if(fine == 0.0d) {
+				LOGGER.info("No pending dues");
+				return new ResponseEntity<>(fine, HttpStatus.OK);
+			}
+			else
+				return new ResponseEntity<>(fine, HttpStatus.OK);
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
-		else
-			return new ResponseEntity<>(fine, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/getCountOfAllBooks")
