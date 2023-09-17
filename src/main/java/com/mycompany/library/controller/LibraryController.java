@@ -89,16 +89,20 @@ public class LibraryController {
 	
 	@PutMapping(value = "/updateBook")
 	public ResponseEntity<Book> updateBook(@RequestBody Book book){
-		
+
 		LOGGER.info("Updating book-->");
-		Optional<Book> bookObj = libraryService.findBookById(book.getBookId());
-		if(null != bookObj) {
-			libraryService.addBookToLibrary(book);
-			LOGGER.info("Book with book id - {}, updated successfully", book.getBookId());
-			return new ResponseEntity<Book>(book, HttpStatus.OK);
-		}else {
-			LOGGER.info("Unable to find book record with id : {}", book.getBookId());
-			return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
+		try{
+			Optional<Book> bookObj = libraryService.findBookById(book.getBookId());
+			if(null != bookObj) {
+				libraryService.addBookToLibrary(book);
+				LOGGER.info("Book with book id - {}, updated successfully", book.getBookId());
+				return new ResponseEntity<Book>(book, HttpStatus.OK);
+			}else {
+				LOGGER.info("Unable to find book record with id : {}", book.getBookId());
+				return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
+			}
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
 	}
 	
