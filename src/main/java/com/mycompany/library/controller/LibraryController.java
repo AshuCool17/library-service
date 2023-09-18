@@ -145,11 +145,15 @@ public class LibraryController {
 	
 	@PostMapping(value = "/issueBook")
 	public ResponseEntity<String> issueBook(String bookName){
-		
-		LOGGER.info("Issuing book API");
-		String msg = libraryService.issueBook(bookName);
-		LOGGER.info("Issue Book response -> "+msg);
-		return new ResponseEntity<>(msg, HttpStatus.OK);
-		
+
+		try{
+			LOGGER.info("Issuing book API");
+			String msg = libraryService.issueBook(bookName);
+			LOGGER.info("Issue Book response -> "+msg);
+			return new ResponseEntity<>(msg, HttpStatus.OK);
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
+		}
+
 	}
 }
