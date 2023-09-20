@@ -59,16 +59,21 @@ public class LibraryController {
 	
 	@GetMapping(value = "/getAllBooks")
 	public ResponseEntity<List<Book>> getAllBooks(@RequestParam(name = "name")String name){
-		
+
 		LOGGER.info("Retrieving books-->");
-		List<Book> booksList = libraryService.getAllBooks(name);
-		if(!booksList.isEmpty()) {
-			LOGGER.info("Books retrieved successfully");
-			return new ResponseEntity<>(booksList, HttpStatus.OK);
-		}
-		else {
-			LOGGER.info("Unable to find book records");
-			return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
+
+		try{
+			List<Book> booksList = libraryService.getAllBooks(name);
+			if(!booksList.isEmpty()) {
+				LOGGER.info("Books retrieved successfully");
+				return new ResponseEntity<>(booksList, HttpStatus.OK);
+			}
+			else {
+				LOGGER.info("Unable to find book records");
+				return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
+			}
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
 	}
 	
