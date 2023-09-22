@@ -35,11 +35,15 @@ public class LibraryController {
 
 	@PostMapping(value = "/addBook")
 	public ResponseEntity<Book> addBooksToLibrary(@RequestBody Book book) {
-		
+
 		LOGGER.info("Adding book-->");
-		libraryService.addBookToLibrary(book);
-		LOGGER.info("Book with book id - {}, added to library succesfully", book.getBookId());
-		return new ResponseEntity<>(book, HttpStatus.OK);
+		try {
+			libraryService.addBookToLibrary(book);
+			LOGGER.info("Book with book id - {}, added to library succesfully", book.getBookId());
+			return new ResponseEntity<>(book, HttpStatus.OK);
+		}catch(LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
+		}
 	}
 	
 	@GetMapping(value = "/findBookById")
