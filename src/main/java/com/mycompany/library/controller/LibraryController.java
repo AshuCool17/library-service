@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.service.LibraryService;
 
