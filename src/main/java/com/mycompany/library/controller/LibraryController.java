@@ -41,10 +41,11 @@ public class LibraryController {
 		try {
 			libraryService.addBookToLibrary(book);
 			LOGGER.info("Book with book id - {}, added to library succesfully", book.getBookId());
-			return new ResponseEntity<>(book, HttpStatus.OK);
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
+			return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
 		}
+		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/findBookById")

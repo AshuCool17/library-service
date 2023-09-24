@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.library.controller.LibraryController;
 import com.mycompany.library.dao.LibraryDao;
 import com.mycompany.library.dao.UserDao;
+import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.LibraryService;
@@ -27,7 +28,7 @@ public class LibraryServiceImpl implements LibraryService {
 	 * add new book into library
 	 */
 	@Override
-	public Book addBookToLibrary(Book book) {
+	public Book addBookToLibrary(Book book) throws LibraryException{
 		return libraryDao.save(book);
 	}
 
