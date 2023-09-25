@@ -17,7 +17,7 @@ public interface LibraryService {
 
 	Book addBookToLibrary(Book book) throws LibraryException;//add new book into library
 
-	Optional<Book> findBookById(Long id);//retrieve book by book id
+	Optional<Book> findBookById(Long id) throws LibraryException;//retrieve book by book id
 
 	List<Book> getAllBooks(String name);//retrieve book by book name
 
