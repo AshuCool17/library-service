@@ -33,7 +33,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Optional<Book> findBookById(Long id) {
+	public Optional<Book> findBookById(Long id) throws LibraryException{
 		return libraryDao.findById(id);
 	}
 
