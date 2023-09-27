@@ -43,7 +43,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void deleteBookById(Long id) {
+	public void deleteBookById(Long id) throws LibraryException{
 		libraryDao.deleteById(id);
 	}
 

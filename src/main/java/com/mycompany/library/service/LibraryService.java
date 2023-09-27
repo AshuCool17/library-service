@@ -21,7 +21,7 @@ public interface LibraryService {
 
 	List<Book> getAllBooks(String name) throws LibraryException;//retrieve book by book name
 
-	void deleteBookById(Long id);//delete book by book id
+	void deleteBookById(Long id) throws LibraryException;//delete book by book id
 
 	Double calculateFine(long userId);//calculating fine for a particular user
 

@@ -106,6 +106,7 @@ public class LibraryController {
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/updateBook")
