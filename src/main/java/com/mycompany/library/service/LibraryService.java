@@ -23,7 +23,7 @@ public interface LibraryService {
 
 	void deleteBookById(Long id) throws LibraryException;//delete book by book id
 
-	Double calculateFine(long userId);//calculating fine for a particular user
+	Double calculateFine(long userId) throws LibraryException;//calculating fine for a particular user
 
 	Long getCountOfAllBooks();//get count of books in the library
 

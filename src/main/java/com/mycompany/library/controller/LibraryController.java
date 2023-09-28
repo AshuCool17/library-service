@@ -126,6 +126,7 @@ public class LibraryController {
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/calculateFine")
@@ -143,6 +144,7 @@ public class LibraryController {
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/getCountOfAllBooks")

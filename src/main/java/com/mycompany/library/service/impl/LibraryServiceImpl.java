@@ -48,7 +48,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Double calculateFine(long userId) {
+	public Double calculateFine(long userId) throws LibraryException{
 		LOGGER.info("Calculating fine-->");
 		User user = userDao.getById(userId);//find the user by id
 		if(user.getReturnDate().compareTo(user.getIssueDate()) == 0){
