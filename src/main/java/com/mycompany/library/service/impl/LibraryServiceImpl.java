@@ -62,7 +62,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Long getCountOfAllBooks() {
+	public Long getCountOfAllBooks() throws LibraryException;{
 		return libraryDao.count(); //
 	}
 

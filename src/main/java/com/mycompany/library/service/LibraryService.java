@@ -25,7 +25,7 @@ public interface LibraryService {
 
 	Double calculateFine(long userId) throws LibraryException;//calculating fine for a particular user
 
-	Long getCountOfAllBooks();//get count of books in the library
+	Long getCountOfAllBooks() throws LibraryException;//get count of books in the library
 
 	String issueBook(String name);//issue book to the student
 
