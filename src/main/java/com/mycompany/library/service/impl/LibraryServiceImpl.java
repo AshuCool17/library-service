@@ -62,12 +62,12 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Long getCountOfAllBooks() throws LibraryException;{
+	public Long getCountOfAllBooks() throws LibraryException{
 		return libraryDao.count(); //
 	}
 
 	@Override
-	public String issueBook(String name) {
+	public String issueBook(String name) throws LibraryException{
 		Long countOfBooks = getCountOfAllBooks();
 		String msg = null;
 		LOGGER.info("Total books -->" + countOfBooks);
