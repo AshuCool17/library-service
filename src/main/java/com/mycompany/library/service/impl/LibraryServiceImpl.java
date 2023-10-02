@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.library.controller.LibraryController;
 import com.mycompany.library.dao.LibraryDao;
 import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.exception.LibraryException;
