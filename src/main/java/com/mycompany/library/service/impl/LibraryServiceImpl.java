@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.library.dao.LibraryDao;
 import com.mycompany.library.dao.UserDao;
+import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.model.User;
@@ -32,7 +33,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Optional<Book> findBookById(Long id) throws LibraryException{
+	public Optional<Book> findBookById(Long id) throws BookNotFoundException{
 		return libraryDao.findById(id);
 	}
 

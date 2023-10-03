@@ -6,6 +6,7 @@ package com.mycompany.library.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 
@@ -17,7 +18,7 @@ public interface LibraryService {
 
 	Book addBookToLibrary(Book book) throws LibraryException;//add new book into library
 
-	Optional<Book> findBookById(Long id) throws LibraryException;//retrieve book by book id
+	Optional<Book> findBookById(Long id) throws BookNotFoundException;//retrieve book by book id
 
 	List<Book> getAllBooks(String name) throws LibraryException;//retrieve book by book name
 

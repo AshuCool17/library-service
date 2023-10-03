@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.service.LibraryService;
@@ -62,7 +63,7 @@ public class LibraryController {
 				LOGGER.info("Unable to find book record with id: " + id);
 				return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
 			}
-		}catch(LibraryException e) {
+		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -103,7 +104,7 @@ public class LibraryController {
 				LOGGER.info("Unable to find book record with id : {}", id);
 				return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
 			}
-		}catch(LibraryException e) {
+		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -123,7 +124,7 @@ public class LibraryController {
 				LOGGER.info("Unable to find book record with id : {}", book.getBookId());
 				return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
 			}
-		}catch(LibraryException e) {
+		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
