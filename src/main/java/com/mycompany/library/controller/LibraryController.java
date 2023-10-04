@@ -106,6 +106,8 @@ public class LibraryController {
 			}
 		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
+		} catch (LibraryException e) {
+			e.printStackTrace();
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -126,6 +128,8 @@ public class LibraryController {
 			}
 		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
+		} catch (LibraryException e) {
+			e.printStackTrace();
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
