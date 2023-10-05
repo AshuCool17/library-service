@@ -20,7 +20,7 @@ public interface LibraryService {
 
 	Optional<Book> findBookById(Long id) throws BookNotFoundException;//retrieve book by book id
 
-	List<Book> getAllBooks(String name) throws LibraryException;//retrieve book by book name
+	List<Book> getAllBooks(String name) throws BookNotFoundException;//retrieve book by book name
 
 	void deleteBookById(Long id) throws LibraryException;//delete book by book id
 

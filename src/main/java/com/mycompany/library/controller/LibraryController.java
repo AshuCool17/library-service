@@ -84,7 +84,7 @@ public class LibraryController {
 				LOGGER.info("Unable to find book records");
 				return new ResponseEntity<>(booksList, HttpStatus.NOT_FOUND);
 			}
-		}catch(LibraryException e) {
+		}catch(BookNotFoundException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
