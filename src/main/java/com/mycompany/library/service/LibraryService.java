@@ -28,7 +28,7 @@ public interface LibraryService {
 
 	Long getCountOfAllBooks() throws LibraryException;//get count of books in the library
 
-	String issueBook(String name) throws LibraryException;//issue book to the student
+	String issueBook(String name) throws BookNotFoundException, LibraryException;//issue book to the student
 
 
 }

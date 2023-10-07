@@ -38,7 +38,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public List<Book> getAllBooks(String name) {
+	public List<Book> getAllBooks(String name) throws BookNotFoundException{
 		return libraryDao.findAll();
 	}
 
@@ -67,7 +67,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public String issueBook(String name) throws LibraryException{
+	public String issueBook(String name) throws BookNotFoundException, LibraryException{
 		Long countOfBooks = getCountOfAllBooks();
 		String msg = null;
 		LOGGER.info("Total books -->" + countOfBooks);
