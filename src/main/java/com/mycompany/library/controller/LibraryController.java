@@ -182,6 +182,8 @@ public class LibraryController {
 			return new ResponseEntity<>(msg, HttpStatus.OK);
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
+		} catch (BookNotFoundException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
