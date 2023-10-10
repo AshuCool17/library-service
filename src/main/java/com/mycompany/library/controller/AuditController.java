@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.AuditNotFoundException;
 import com.mycompany.library.model.Audit;
 import com.mycompany.library.service.AuditService;
 
@@ -26,12 +27,18 @@ public class AuditController {
 	public ResponseEntity<List<Audit>> getAllReports(){
 		
 		LOGGER.info("Getting all reports info-->");
-		List<Audit> audits = auditService.getReports();
+		try{
+			List<Audit> audits = auditService.getReports();
 		if(audits.size() == 0)
 			LOGGER.info("No records found");
-		else
+		else {
 			LOGGER.info("Successfully retrieved all users info");
-		return new ResponseEntity<>(audits, HttpStatus.OK);
+			return new ResponseEntity<>(audits, HttpStatus.OK);
+		}
+		}catch(AuditNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/reportsForTimeline")
