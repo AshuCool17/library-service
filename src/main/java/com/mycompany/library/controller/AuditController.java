@@ -45,11 +45,17 @@ public class AuditController {
 	public ResponseEntity<List<Audit>> getAllReportsForTimeline(LocalDateTime startDate, LocalDateTime endDate){
 		
 		LOGGER.info("Getting all reports info for timeline-->");
-		List<Audit> audits = auditService.getReportsForTimeline(startDate, endDate);
-		if(audits.size() == 0)
-			LOGGER.info("No records found");
-		else
-			LOGGER.info("Successfully retrieved all users info");
-		return new ResponseEntity<>(audits, HttpStatus.OK);
+		try{
+			List<Audit> audits = auditService.getReportsForTimeline(startDate, endDate);
+			if(audits.size() == 0)
+				LOGGER.info("No records found");
+			else {
+				LOGGER.info("Successfully retrieved all users info");
+				return new ResponseEntity<>(audits, HttpStatus.OK);
+			}
+		}catch(AuditNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -17,7 +17,7 @@ public interface AuditService {
 
 	List<Audit> getReports() throws AuditNotFoundException;
 
-	List<Audit> getReportsForTimeline(LocalDateTime startDate, LocalDateTime endDate);
+	List<Audit> getReportsForTimeline(LocalDateTime startDate, LocalDateTime endDate) throws AuditNotFoundException;
 
 	
 }
