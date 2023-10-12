@@ -159,11 +159,11 @@ public class LibraryController {
 		
 		try{
 			Long count = libraryService.getCountOfAllBooks();
-			if(count == 0) {
-				LOGGER.info("No Books available");
+			if(count != 0) {
 				return new ResponseEntity<>(count, HttpStatus.OK);
 			}
 			else {
+				LOGGER.info("No Books available");
 				return new ResponseEntity<>(count, HttpStatus.NOT_FOUND);
 			}
 		}catch(LibraryException e) {
