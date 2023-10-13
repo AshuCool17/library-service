@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.library.dao.UserDao;
+import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.UserService;
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<User> getUserById(long id) {
+	public Optional<User> getUserById(long id) throws UserNotFoundException{
 		return userDao.findById(id);
 	}
 

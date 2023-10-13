@@ -6,6 +6,7 @@ package com.mycompany.library.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 
 /**
@@ -20,7 +21,7 @@ public interface UserService {
 
 	User updateUser(User user);//update user
 
-	Optional<User> getUserById(long id);//retrieve user details based upon id
+	Optional<User> getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
 
 	List<User> getAllUsers();//retrieve all users
 	

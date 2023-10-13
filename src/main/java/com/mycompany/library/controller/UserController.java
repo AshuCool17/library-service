@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.UserService;
 
@@ -47,15 +48,20 @@ public class UserController {
 	public ResponseEntity<String> deleteUser(@RequestParam long id){
 		
 		LOGGER.info("Deleting user-->");
-		Optional<User> userObj = userService.getUserById(id);
-		if(userObj.isPresent()) {
-			userService.deleteUser(id);
-			LOGGER.info("User with user id - {}, deleted successfully", id);
-			return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
-		}else {
-			LOGGER.info("Unable to find user record with id: {}", id);
-			return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
+		try {
+			Optional<User> userObj = userService.getUserById(id);
+			if(userObj.isPresent()) {
+				userService.deleteUser(id);
+				LOGGER.info("User with user id - {}, deleted successfully", id);
+				return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+			}else {
+				LOGGER.info("Unable to find user record with id: {}", id);
+				return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
+			}
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/updateUser")
