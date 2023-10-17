@@ -88,6 +88,7 @@ public class UserController {
 	public ResponseEntity<Optional<User>> getUserById(@RequestParam long id){
 		
 		LOGGER.info("Getting user info-->");
+		try{
 		Optional<User> userObj = userService.getUserById(id);
 		if(userObj.isPresent()) {
 			LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
@@ -96,6 +97,10 @@ public class UserController {
 			LOGGER.info("Unable to find user record with id: {}", id);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	@GetMapping(value = "/getAllUsers")
