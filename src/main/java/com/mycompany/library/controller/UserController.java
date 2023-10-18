@@ -86,17 +86,17 @@ public class UserController {
 	
 	@GetMapping(value = "/getUserById")
 	public ResponseEntity<Optional<User>> getUserById(@RequestParam long id){
-		
+
 		LOGGER.info("Getting user info-->");
 		try{
-		Optional<User> userObj = userService.getUserById(id);
-		if(userObj.isPresent()) {
-			LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
-			return new ResponseEntity<>(userObj, HttpStatus.OK);
-		} else {
-			LOGGER.info("Unable to find user record with id: {}", id);
-			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
-		}
+			Optional<User> userObj = userService.getUserById(id);
+			if(userObj.isPresent()) {
+				LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
+				return new ResponseEntity<>(userObj, HttpStatus.OK);
+			} else {
+				LOGGER.info("Unable to find user record with id: {}", id);
+				return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+			}
 		}catch(UserNotFoundException e) {
 			LOGGER.error("Exception - " + e.getMessage());
 		}
@@ -105,14 +105,19 @@ public class UserController {
 	
 	@GetMapping(value = "/getAllUsers")
 	public ResponseEntity<List<User>> getAllUsers(){
-		
+
 		LOGGER.info("Getting all users info-->");
-		List<User> users = userService.getAllUsers();
-		if(users.size() == 0)
-			LOGGER.info("No records found");
-		else
-			LOGGER.info("Successfully retrieved all users info");
-		return new ResponseEntity<>(users, HttpStatus.OK);
+		try {
+			List<User> users = userService.getAllUsers();
+			if(users.size() == 0)
+				LOGGER.info("No records found");
+			else
+				LOGGER.info("Successfully retrieved all users info");
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 }
