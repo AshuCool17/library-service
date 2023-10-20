@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.library.dao.UserDao;
+import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.UserService;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public User addUser(User user) {
+	public User addUser(User user) throws UserException{
 		return userDao.save(user);
 	}
 

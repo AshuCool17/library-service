@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.UserService;
@@ -37,11 +38,16 @@ public class UserController {
 	
 	@PostMapping(value = "/addUser")
 	public ResponseEntity<User> addUser(@RequestBody User user){
-		
+
 		LOGGER.info("Adding user-->");
-		User userObj = userService.addUser(user);
-		LOGGER.info("User with user id - {}, added succesfully", user.getId());
-		return new ResponseEntity<>(userObj, HttpStatus.OK);
+		try {
+			User userObj = userService.addUser(user);
+			LOGGER.info("User with user id - {}, added succesfully", user.getId());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		}catch(UserException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/deleteUser")

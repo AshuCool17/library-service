@@ -6,6 +6,7 @@ package com.mycompany.library.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
 
