@@ -15,7 +15,7 @@ import com.mycompany.library.model.User;
  */
 public interface UserService {
 
-	User addUser(User user);//add new user
+	User addUser(User user) throws UserException;//add new user
 
 	void deleteUser(long id);//delete user
 
