@@ -64,7 +64,7 @@ public class UserController {
 				LOGGER.info("Unable to find user record with id: {}", id);
 				return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
 			}
-		}catch(UserNotFoundException e) {
+		}catch(UserNotFoundException | UserException e) {
 			LOGGER.error("Exception - " + e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);

@@ -18,7 +18,7 @@ public interface UserService {
 
 	User addUser(User user) throws UserException;//add new user
 
-	void deleteUser(long id);//delete user
+	void deleteUser(long id) throws UserException;//delete user
 
 	User updateUser(User user);//update user
 
