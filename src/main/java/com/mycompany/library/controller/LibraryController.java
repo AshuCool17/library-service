@@ -98,10 +98,10 @@ public class LibraryController {
 			Optional<Book> book = libraryService.findBookById(id);
 			if(null != book) {
 				libraryService.deleteBookById(id);
-				LOGGER.info("Book with book id - {}, deleted successfully", id);
+				LOGGER.info("Book with book id - " + id + ", deleted successfully");
 				return new ResponseEntity<>(book, HttpStatus.OK);
 			}else {
-				LOGGER.info("Unable to find book record with id : {}", id);
+				LOGGER.info("Unable to find book record with id : " + id);
 				return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
 			}
 		}catch(BookNotFoundException e) {
