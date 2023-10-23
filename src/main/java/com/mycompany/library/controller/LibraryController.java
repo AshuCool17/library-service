@@ -41,7 +41,7 @@ public class LibraryController {
 		LOGGER.info("Adding book-->");
 		try {
 			libraryService.addBookToLibrary(book);
-			LOGGER.info("Book with book id - {}, added to library succesfully", book.getBookId());
+			LOGGER.info("Book with book id - " + book.getBookId() + ", added to library succesfully");
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 			return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
@@ -56,7 +56,7 @@ public class LibraryController {
 		try{
 			Optional<Book> book = libraryService.findBookById(id);
 			if(null != book) {
-				LOGGER.info("Book with id {} retrieved successfully", id);
+				LOGGER.info("Book with id " + id + " retrieved successfully");
 				return new ResponseEntity<>(book, HttpStatus.OK);
 			}
 			else {
