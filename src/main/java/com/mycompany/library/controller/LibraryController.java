@@ -120,10 +120,10 @@ public class LibraryController {
 			Optional<Book> bookObj = libraryService.findBookById(book.getBookId());
 			if(null != bookObj) {
 				libraryService.addBookToLibrary(book);
-				LOGGER.info("Book with book id - {}, updated successfully", book.getBookId());
+				LOGGER.info("Book with book id - " + book.getBookId() + ", updated successfully");
 				return new ResponseEntity<Book>(book, HttpStatus.OK);
 			}else {
-				LOGGER.info("Unable to find book record with id : {}", book.getBookId());
+				LOGGER.info("Unable to find book record with id : " + book.getBookId());
 				return new ResponseEntity<Book>(book, HttpStatus.NOT_FOUND);
 			}
 		}catch(BookNotFoundException e) {
