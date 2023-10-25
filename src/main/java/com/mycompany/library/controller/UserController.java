@@ -32,10 +32,10 @@ import com.mycompany.library.service.UserService;
 public class UserController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@PostMapping(value = "/addUser")
 	public ResponseEntity<User> addUser(@RequestBody User user){
 
@@ -49,10 +49,10 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/deleteUser")
 	public ResponseEntity<String> deleteUser(@RequestParam long id){
-		
+
 		LOGGER.info("Deleting user-->");
 		try {
 			Optional<User> userObj = userService.getUserById(id);
@@ -69,7 +69,7 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/updateUser")
 	public ResponseEntity<String> updateUser(@RequestBody User user){
 
@@ -89,7 +89,7 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/getUserById")
 	public ResponseEntity<Optional<User>> getUserById(@RequestParam long id){
 
@@ -108,7 +108,7 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@GetMapping(value = "/getAllUsers")
 	public ResponseEntity<List<User>> getAllUsers(){
 
@@ -125,5 +125,5 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 }

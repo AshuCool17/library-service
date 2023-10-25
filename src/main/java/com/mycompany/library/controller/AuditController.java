@@ -25,16 +25,16 @@ public class AuditController {
 	
 	@GetMapping(value = "/reports")
 	public ResponseEntity<List<Audit>> getAllReports(){
-		
+
 		LOGGER.info("Getting all reports info-->");
 		try{
 			List<Audit> audits = auditService.getReports();
-		if(audits.size() == 0)
-			LOGGER.info("No records found");
-		else {
-			LOGGER.info("Successfully retrieved all users info");
-			return new ResponseEntity<>(audits, HttpStatus.OK);
-		}
+			if(audits.size() == 0)
+				LOGGER.info("No records found");
+			else {
+				LOGGER.info("Successfully retrieved all users info");
+				return new ResponseEntity<>(audits, HttpStatus.OK);
+			}
 		}catch(AuditNotFoundException e) {
 			LOGGER.error("Exception - " + e.getMessage());
 		}

@@ -30,7 +30,7 @@ import com.mycompany.library.service.LibraryService;
  */
 @RestController(value = "/library")
 public class LibraryController {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(LibraryController.class);
 	@Autowired
 	private LibraryService libraryService;
@@ -48,7 +48,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/findBookById")
 	public ResponseEntity<Optional<Book>> findBookById(@RequestParam(name = "id")Long id){
 
@@ -68,7 +68,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/getAllBooks")
 	public ResponseEntity<List<Book>> getAllBooks(@RequestParam(name = "name")String name){
 
@@ -89,7 +89,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/deleteBookById")
 	public ResponseEntity<Optional<Book>> deleteBookByName(@RequestParam(name = "id")Long id){
 
@@ -111,7 +111,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/updateBook")
 	public ResponseEntity<Book> updateBook(@RequestBody Book book){
 
@@ -133,7 +133,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/calculateFine")
 	public ResponseEntity<Double> calculateFine(@RequestParam long userId){
 
@@ -151,12 +151,12 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/getCountOfAllBooks")
 	public ResponseEntity<Long> getCountOfAllBooks(){
-		
+
 		LOGGER.info("Retrieving books count-->");
-		
+
 		try{
 			Long count = libraryService.getCountOfAllBooks();
 			if(count != 0) {
@@ -171,7 +171,7 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PostMapping(value = "/issueBook")
 	public ResponseEntity<String> issueBook(String bookName){
 
