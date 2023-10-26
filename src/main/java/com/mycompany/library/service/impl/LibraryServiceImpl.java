@@ -17,13 +17,13 @@ import com.mycompany.library.service.LibraryService;
 
 @Service
 public class LibraryServiceImpl implements LibraryService {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(LibraryServiceImpl.class);
 
 	private LibraryDao libraryDao;
-	
+
 	private UserDao userDao;
-	
+
 	/**
 	 * add new book into library
 	 */
@@ -80,13 +80,13 @@ public class LibraryServiceImpl implements LibraryService {
 				LOGGER.info("Currently, the book with the name " + name + "is unavailable in library");
 				msg = "Currently, the book with the name " + name + "is unavailable in library";
 			}
-			
+
 		}else {
 			LOGGER.info("No books in library");
 			msg = "No books in library";
 		}
 		return msg;
-		
+
 	}
-	
+
 }

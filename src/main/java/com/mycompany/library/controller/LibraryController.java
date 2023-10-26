@@ -187,4 +187,16 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/upcomingBooks")
+	public ResponseEntity<String> upcomingBooks(){
+		
+		try {
+			LOGGER.info("Upcoming books API");
+			List<String> books = libraryService.upcomingBooks();
+		} catch (BookNotFoundException e) {
+			LOGGER.error("exception -> "+e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
