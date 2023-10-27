@@ -30,5 +30,6 @@ public interface LibraryService {
 
 	String issueBook(String name) throws BookNotFoundException, LibraryException;//issue book to the student
 
+	List<String> upcomingBooks() throws LibraryException;//displays upcoming books
 
 }

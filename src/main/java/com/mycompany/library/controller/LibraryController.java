@@ -189,12 +189,13 @@ public class LibraryController {
 	}
 	
 	@GetMapping(value = "/upcomingBooks")
-	public ResponseEntity<String> upcomingBooks(){
+	public ResponseEntity<List<String>> upcomingBooks(){
 		
 		try {
 			LOGGER.info("Upcoming books API");
 			List<String> books = libraryService.upcomingBooks();
-		} catch (BookNotFoundException e) {
+			return new ResponseEntity<>(books, HttpStatus.OK);
+		} catch (LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
