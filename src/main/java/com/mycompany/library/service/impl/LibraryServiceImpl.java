@@ -1,5 +1,6 @@
 package com.mycompany.library.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,6 +88,13 @@ public class LibraryServiceImpl implements LibraryService {
 		}
 		return msg;
 
+	}
+
+	@Override
+	public List<String> upcomingBooks() throws LibraryException {
+		List<String> books = new ArrayList<>();
+		LOGGER.info("Upcoming books -->");
+		return books;
 	}
 
 }
