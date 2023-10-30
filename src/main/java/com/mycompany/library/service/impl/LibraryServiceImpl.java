@@ -87,13 +87,16 @@ public class LibraryServiceImpl implements LibraryService {
 			msg = "No books in library";
 		}
 		return msg;
-
 	}
 
 	@Override
 	public List<String> upcomingBooks() throws LibraryException {
 		List<String> books = new ArrayList<>();
 		LOGGER.info("Upcoming books -->");
+		books.add("A");
+		books.add("B");
+		books.add("C");
+		books.add("D");
 		return books;
 	}
 
