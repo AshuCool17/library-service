@@ -97,6 +97,7 @@ public class LibraryServiceImpl implements LibraryService {
 		books.add("B");
 		books.add("C");
 		books.add("D");
+		LOGGER.info("books-> " + books.toString());
 		return books;
 	}
 
