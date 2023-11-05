@@ -30,6 +30,6 @@ public class User {
 	
 	private double penalty;
 	
-	
+	private boolean hasSubscription;
 
 }
