@@ -64,7 +64,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public Long getCountOfAllBooks() throws LibraryException{
-		return libraryDao.count(); //
+		return libraryDao.count(); //get count of all books
 	}
 
 	@Override
@@ -97,9 +97,8 @@ public class LibraryServiceImpl implements LibraryService {
 		books.add("B");
 		books.add("C");
 		books.add("D");
-		LOGGER.info("books-> " + books.toString());
+		LOGGER.info("all books-> " + books.toString());
 		return books;
 	}
-	
 
 }
