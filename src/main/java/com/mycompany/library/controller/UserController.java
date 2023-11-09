@@ -3,6 +3,7 @@
  */
 package com.mycompany.library.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
 import com.mycompany.library.model.User;
+import com.mycompany.library.service.LibraryService;
 import com.mycompany.library.service.UserService;
 
 /**
@@ -35,6 +38,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private LibraryService libraryService;
 
 	@PostMapping(value = "/addUser")
 	public ResponseEntity<User> addUser(@RequestBody User user){
@@ -124,6 +130,21 @@ public class UserController {
 			LOGGER.error("Exception - " + e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value = "/getNotificationsForNewArrivals")
+	public ResponseEntity<List<String>> getNotificationsForNewArrivals(@RequestBody User user){
+		if(user.isHasSubscription()) {
+			List<String> books = new ArrayList<>();
+			try {
+				books = libraryService.upcomingBooks();
+			} catch (LibraryException e) {
+				LOGGER.error("Exception - " + e.getMessage());
+			}
+			return new ResponseEntity<>(books, HttpStatus.OK);
+		}
+		else
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
