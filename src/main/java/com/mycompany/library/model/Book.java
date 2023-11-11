@@ -25,5 +25,7 @@ public class Book {
 	private String author;
 	
 	private Date publishDate;
+	
+	private String[] country = {"Spain", "Germany"};
 
 }

@@ -134,16 +134,15 @@ public class UserController {
 	
 	@GetMapping(value = "/getNotificationsForNewArrivals")
 	public ResponseEntity<List<String>> getNotificationsForNewArrivals(@RequestBody User user){
+		List<String> books = new ArrayList<>();
 		if(user.isHasSubscription()) {
-			List<String> books = new ArrayList<>();
 			try {
 				books = libraryService.upcomingBooks();
+				return new ResponseEntity<>(books, HttpStatus.OK);
 			} catch (LibraryException e) {
 				LOGGER.error("Exception - " + e.getMessage());
 			}
-			return new ResponseEntity<>(books, HttpStatus.OK);
 		}
-		else
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
