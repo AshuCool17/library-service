@@ -177,6 +177,9 @@ public class LibraryController {
 
 		try{
 			LOGGER.info("Issuing book API");
+			List<Book> books = libraryService.getAllBooks(bookName);
+			List<String> bookPublishedCountries = books.get(0).getCountry();
+			LOGGER.info("book published countries -> " + bookPublishedCountries.toString());
 			String msg = libraryService.issueBook(bookName);
 			LOGGER.info("Issue Book response -> "+msg);
 			return new ResponseEntity<>(msg, HttpStatus.OK);
