@@ -4,6 +4,7 @@
 package com.mycompany.library.model;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,6 @@ public class Book {
 	
 	private Date publishDate;
 	
-	private String[] country = {"Spain", "Germany"};
+	private List<String> country;
 
 }
