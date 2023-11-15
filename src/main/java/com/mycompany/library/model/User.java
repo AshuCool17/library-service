@@ -4,6 +4,7 @@
 package com.mycompany.library.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,5 +34,7 @@ public class User {
 	private boolean hasSubscription;
 	
 	private String country;
+	
+	private List<String> books;
 
 }

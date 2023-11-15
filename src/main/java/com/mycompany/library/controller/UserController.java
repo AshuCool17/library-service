@@ -145,5 +145,10 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/getUserForBookIssued")
+	public ResponseEntity<User> getUserForBookIssued(@RequestBody String bookName){
+		userService.getUserForBookIssued(bookName);
+	}
 
 }
