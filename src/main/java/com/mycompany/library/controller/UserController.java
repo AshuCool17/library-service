@@ -148,7 +148,8 @@ public class UserController {
 	
 	@GetMapping(value = "/getUserForBookIssued")
 	public ResponseEntity<User> getUserForBookIssued(@RequestBody String bookName){
-		userService.getUserForBookIssued(bookName);
+		User user = userService.getUserForBookIssued(bookName);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
