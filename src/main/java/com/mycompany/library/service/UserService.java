@@ -25,5 +25,7 @@ public interface UserService {
 	Optional<User> getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
 
 	List<User> getAllUsers() throws UserNotFoundException;//retrieve all users
+
+	User getUserForBookIssued(String bookName);//retrieve user for the book issued
 	
 }
