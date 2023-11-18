@@ -149,6 +149,8 @@ public class UserController {
 	@GetMapping(value = "/getUserForBookIssued")
 	public ResponseEntity<User> getUserForBookIssued(@RequestBody String bookName){
 		User user = userService.getUserForBookIssued(bookName);
+		String userCountry = user.getCountry();
+		LOGGER.info("user country " + userCountry);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
