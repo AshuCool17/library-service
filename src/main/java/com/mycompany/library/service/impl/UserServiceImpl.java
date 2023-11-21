@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAll();
 	}
 
+	@Override
+	public User getUserForBookIssued(String bookName) {
+		return null;
+	}
+
 }
