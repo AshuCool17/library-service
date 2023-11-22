@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserForBookIssued(String bookName) {
-		return null;
+		return userDao.findBy(null, null);
 	}
 
 }
