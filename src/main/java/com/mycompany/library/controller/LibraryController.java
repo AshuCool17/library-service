@@ -181,7 +181,7 @@ public class LibraryController {
 			List<String> bookPublishedCountries = books.get(0).getCountry();
 			LOGGER.info("book published countries -> " + bookPublishedCountries.toString());
 			String msg = null;
-			if(bookPublishedCountries.contains(books))
+			if(books.contains(bookPublishedCountries))
 				msg = libraryService.issueBook(bookName);
 			LOGGER.info("Issue Book response -> " + msg);
 			return new ResponseEntity<>(msg, HttpStatus.OK);
