@@ -181,10 +181,13 @@ public class LibraryController {
 			List<String> bookPublishedCountries = books.get(0).getCountry();
 			LOGGER.info("book published countries -> " + bookPublishedCountries.toString());
 			String msg = null;
-			if(books.contains(bookPublishedCountries))
+			if(books.contains(bookPublishedCountries)) {
 				msg = libraryService.issueBook(bookName);
-			LOGGER.info("Issue Book response -> " + msg);
-			return new ResponseEntity<>(msg, HttpStatus.OK);
+				LOGGER.info("Issue Book response -> " + msg);
+				return new ResponseEntity<>(msg, HttpStatus.OK);
+			}
+			LOGGER.info("Issue Book response. Not in the same country");
+			return new ResponseEntity<>(HttpStatus.OK);
 		}catch(LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
 		} catch (BookNotFoundException e) {
