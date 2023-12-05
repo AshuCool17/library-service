@@ -28,5 +28,7 @@ public class Book {
 	private Date publishDate;
 	
 	private List<String> country;
+	
+	private Integer numberOfCopies;
 
 }
