@@ -208,4 +208,15 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/getNumberOfCopies")
+	public ResponseEntity<Integer> getNumberOfCopies(){
+		
+		try {
+			LOGGER.info("Number of Copies");
+			Integer numberOfCopies = libraryService.getNumberOfCopies();
+			return new ResponseEntity<>(numberOfCopies, HttpStatus.OK);
+		} 
+		}
+	}
 }
