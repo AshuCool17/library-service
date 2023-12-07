@@ -32,4 +32,6 @@ public interface LibraryService {
 
 	List<String> upcomingBooks() throws LibraryException;//displays upcoming books
 
+	Integer getNumberOfCopies();
+
 }
