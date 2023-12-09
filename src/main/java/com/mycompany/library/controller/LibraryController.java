@@ -216,7 +216,9 @@ public class LibraryController {
 			LOGGER.info("Number of Copies");
 			Integer numberOfCopies = libraryService.getNumberOfCopies();
 			return new ResponseEntity<>(numberOfCopies, HttpStatus.OK);
-		} 
+		} catch (LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
