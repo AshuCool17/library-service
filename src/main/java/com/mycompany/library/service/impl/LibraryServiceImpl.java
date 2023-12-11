@@ -101,4 +101,10 @@ public class LibraryServiceImpl implements LibraryService {
 		return books;
 	}
 
+	@Override
+	public Integer getNumberOfCopies(String bookName) throws LibraryException {
+		LOGGER.info("Number of copies -->");
+		return null;
+	}
+
 }
