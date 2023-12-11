@@ -210,11 +210,11 @@ public class LibraryController {
 	}
 	
 	@GetMapping(value = "/getNumberOfCopies")
-	public ResponseEntity<Integer> getNumberOfCopies(){
+	public ResponseEntity<Integer> getNumberOfCopies(@RequestParam String bookName){
 		
 		try {
 			LOGGER.info("Number of Copies");
-			Integer numberOfCopies = libraryService.getNumberOfCopies();
+			Integer numberOfCopies = libraryService.getNumberOfCopies(bookName);
 			return new ResponseEntity<>(numberOfCopies, HttpStatus.OK);
 		} catch (LibraryException e) {
 			LOGGER.error("exception -> "+e.getMessage());
