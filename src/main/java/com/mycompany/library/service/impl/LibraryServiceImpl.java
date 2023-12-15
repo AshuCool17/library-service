@@ -104,6 +104,13 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public Integer getNumberOfCopies(String bookName) throws LibraryException {
 		LOGGER.info("Number of copies -->");
+		try {
+			List<Book> books = getAllBooks(bookName);
+			if(!books.isEmpty())
+				return books.get(0).getNumberOfCopies();
+		} catch (BookNotFoundException e) {
+			LOGGER.info("No books in library");
+		}
 		return null;
 	}
 
