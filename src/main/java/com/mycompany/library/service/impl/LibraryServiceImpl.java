@@ -109,7 +109,7 @@ public class LibraryServiceImpl implements LibraryService {
 			if(!books.isEmpty())
 				return books.get(0).getNumberOfCopies();
 		} catch (BookNotFoundException e) {
-			LOGGER.info("No books in library");
+			LOGGER.error("No books in library");
 		}
 		return null;
 	}
