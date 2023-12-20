@@ -116,7 +116,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public void payFine(String name) throws LibraryException {
-		//to-do
+		LOGGER.info("Pay fine -->");
 	}
 
 }
