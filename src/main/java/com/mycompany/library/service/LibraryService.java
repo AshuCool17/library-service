@@ -34,4 +34,5 @@ public interface LibraryService {
 
 	Integer getNumberOfCopies(String bookName) throws LibraryException;//retrieves number of copies available
 
+	void payFine(String name) throws LibraryException;//defaulter pays fine and clears the due
 }
