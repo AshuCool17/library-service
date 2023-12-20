@@ -114,4 +114,9 @@ public class LibraryServiceImpl implements LibraryService {
 		return null;
 	}
 
+	@Override
+	public void payFine(String name) throws LibraryException {
+		//to-do
+	}
+
 }
