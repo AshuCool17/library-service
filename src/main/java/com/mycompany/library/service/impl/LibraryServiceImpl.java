@@ -118,8 +118,10 @@ public class LibraryServiceImpl implements LibraryService {
 	public void payFine(String name) throws LibraryException {
 		LOGGER.info("Pay fine -->");
 		try {
+			if(fine == 0.0)
+				LOGGER.error("No fine due for the user");
 		} catch (BookNotFoundException e) {
-			LOGGER.error("No books in library");
+			LOGGER.error("No fine due for the user");
 		}
 	}
 
