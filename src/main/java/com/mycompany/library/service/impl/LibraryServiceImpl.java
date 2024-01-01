@@ -117,6 +117,10 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public void payFine(String name) throws LibraryException {
 		LOGGER.info("Pay fine -->");
+		try {
+		} catch (BookNotFoundException e) {
+			LOGGER.error("No books in library");
+		}
 	}
 
 }
