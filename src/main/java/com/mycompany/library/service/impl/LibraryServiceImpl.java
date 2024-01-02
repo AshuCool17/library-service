@@ -118,9 +118,12 @@ public class LibraryServiceImpl implements LibraryService {
 	public void payFine(String bookName) throws LibraryException {
 		LOGGER.info("Pay fine -->");
 		User user = userDao.getUserForBookIssued(bookName);
-		if(calculateFine(user.getId()) == 0.0)
-			LOGGER.error("No fine due for the user");
-		
+		Double fine = calculateFine(user.getId());
+		if(fine == 0.0)
+			LOGGER.info("No fine due for the user");
+		else {
+			LOGGER.info("Fine " + fine + ", cleared by user");
+		}
 	}
 
 }
