@@ -221,4 +221,17 @@ public class LibraryController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/payFine")
+	public ResponseEntity<String> payFine(@RequestParam String bookName){
+		
+		try {
+			LOGGER.info("Number of Copies");
+			libraryService.payFine(bookName);
+			return new ResponseEntity<>("Fine Paid", HttpStatus.OK);
+		} catch (LibraryException e) {
+			LOGGER.error("exception -> "+e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
