@@ -115,14 +115,12 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void payFine(String name) throws LibraryException {
+	public void payFine(String bookName) throws LibraryException {
 		LOGGER.info("Pay fine -->");
-		try {
-			if(fine == 0.0)
-				LOGGER.error("No fine due for the user");
-		} catch (BookNotFoundException e) {
+		User user = userDao.getUserForBookIssued(bookName);
+		if(calculateFine(user.getId()) == 0.0)
 			LOGGER.error("No fine due for the user");
-		}
+		
 	}
 
 }
