@@ -122,7 +122,7 @@ public class LibraryServiceImpl implements LibraryService {
 		if(fine == 0.0)
 			LOGGER.info("No fine due for the user");
 		else {
-			LOGGER.info("Fine " + fine + ", cleared by user");
+			LOGGER.info("Fine " + fine + ", paid by user");
 		}
 	}
 
