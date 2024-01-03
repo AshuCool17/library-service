@@ -226,7 +226,7 @@ public class LibraryController {
 	public ResponseEntity<String> payFine(@RequestParam String bookName){
 		
 		try {
-			LOGGER.info("Pay Fine");
+			LOGGER.info("Pay Fine API");
 			libraryService.payFine(bookName);
 			return new ResponseEntity<>("Fine Paid", HttpStatus.OK);
 		} catch (LibraryException e) {
