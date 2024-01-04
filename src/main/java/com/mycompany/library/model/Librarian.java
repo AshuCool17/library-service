@@ -19,4 +19,8 @@ public class Librarian {
 	private long id;
 	
 	private String name;
+	
+	private String password;
+
+	private String role;
 }
