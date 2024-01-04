@@ -30,5 +30,7 @@ public class Book {
 	private List<String> country;
 	
 	private Integer numberOfCopies;
+	
+	private String publication;
 
 }
