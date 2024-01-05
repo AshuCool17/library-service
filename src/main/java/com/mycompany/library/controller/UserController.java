@@ -62,9 +62,9 @@ public class UserController {
 
 		LOGGER.info("Adding Librarian-->");
 		try {
-			User userObj = userService.addLibrarian(librarian);
-			LOGGER.info("User with user id - {}, added succesfully", user.getId());
-			return new ResponseEntity<>(userObj, HttpStatus.OK);
+			Librarian librarianObj = userService.addLibrarian(librarian);
+			LOGGER.info("Librarian with id - {}, added succesfully", librarian.getId());
+			return new ResponseEntity<>(librarianObj, HttpStatus.OK);
 		}catch(UserException e) {
 			LOGGER.error("Exception - " + e.getMessage());
 		}
