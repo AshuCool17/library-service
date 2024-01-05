@@ -58,7 +58,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/addLibrarian")
-	public ResponseEntity<User> addLibrarian(@RequestBody Librarian librarian){
+	public ResponseEntity<Librarian> addLibrarian(@RequestBody Librarian librarian){
 
 		LOGGER.info("Adding Librarian-->");
 		try {
