@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
+import com.mycompany.library.model.Librarian;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.LibraryService;
 import com.mycompany.library.service.UserService;
@@ -48,6 +49,20 @@ public class UserController {
 		LOGGER.info("Adding user-->");
 		try {
 			User userObj = userService.addUser(user);
+			LOGGER.info("User with user id - {}, added succesfully", user.getId());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		}catch(UserException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/addLibrarian")
+	public ResponseEntity<User> addLibrarian(@RequestBody Librarian librarian){
+
+		LOGGER.info("Adding Librarian-->");
+		try {
+			User userObj = userService.addLibrarian(librarian);
 			LOGGER.info("User with user id - {}, added succesfully", user.getId());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		}catch(UserException e) {
