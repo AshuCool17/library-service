@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
+import com.mycompany.library.model.Librarian;
 import com.mycompany.library.model.User;
 
 /**
@@ -27,5 +28,7 @@ public interface UserService {
 	List<User> getAllUsers() throws UserNotFoundException;//retrieve all users
 
 	User getUserForBookIssued(String bookName);//retrieve user for the book issued
+
+	Librarian addLibrarian(Librarian librarian);//add new librarian
 	
 }
