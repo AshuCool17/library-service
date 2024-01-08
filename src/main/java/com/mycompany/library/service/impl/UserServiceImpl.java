@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.mycompany.library.dao.LibrarianDao;
 import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.exception.UserException;
 import com.mycompany.library.exception.UserNotFoundException;
