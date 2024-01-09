@@ -30,5 +30,7 @@ public interface UserService {
 	User getUserForBookIssued(String bookName);//retrieve user for the book issued
 
 	Librarian addLibrarian(Librarian librarian) throws UserException;//add new librarian
+
+	void deleteLibrarian(Librarian librarian) throws UserException;//delete new librarian
 	
 }
