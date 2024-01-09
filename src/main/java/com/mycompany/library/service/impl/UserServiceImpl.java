@@ -61,5 +61,10 @@ public class UserServiceImpl implements UserService {
 	public Librarian addLibrarian(Librarian librarian) throws UserException {
 		return librarianDao.save(librarian);
 	}
+	
+	@Override
+	public void deleteLibrarian(Librarian librarian) throws UserException {
+		librarianDao.delete(librarian);
+	}
 
 }
