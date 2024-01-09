@@ -168,5 +168,25 @@ public class UserController {
 		LOGGER.info("user country " + userCountry);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@DeleteMapping(value = "/deleteLibrarian")
+	public ResponseEntity<String> deleteLibrarian(@RequestParam long id){
+
+		LOGGER.info("Deleting user-->");
+		try {
+			Optional<User> userObj = userService.getUserById(id);
+			if(userObj.isPresent()) {
+				userService.deleteUser(id);
+				LOGGER.info("User with user id - {}, deleted successfully", id);
+				return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+			}else {
+				LOGGER.info("Unable to find user record with id: {}", id);
+				return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
+			}
+		}catch(UserNotFoundException | UserException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }
