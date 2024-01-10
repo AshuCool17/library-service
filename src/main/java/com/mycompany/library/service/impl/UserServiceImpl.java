@@ -67,4 +67,9 @@ public class UserServiceImpl implements UserService {
 		librarianDao.delete(librarian);
 	}
 
+	@Override
+	public Optional<Librarian> getLibrarianById(long id) throws UserNotFoundException {
+		return librarianDao.findById();
+	}
+
 }
