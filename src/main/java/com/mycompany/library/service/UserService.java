@@ -32,5 +32,7 @@ public interface UserService {
 	Librarian addLibrarian(Librarian librarian) throws UserException;//add new librarian
 
 	void deleteLibrarian(Librarian librarian) throws UserException;//delete new librarian
+
+	Optional<User> getLibrarianById(long id) throws UserNotFoundException;//retrieve Librarian details based upon id
 	
 }
