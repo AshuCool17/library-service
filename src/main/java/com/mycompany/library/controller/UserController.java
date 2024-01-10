@@ -172,13 +172,13 @@ public class UserController {
 	@DeleteMapping(value = "/deleteLibrarian")
 	public ResponseEntity<String> deleteLibrarian(@RequestParam long id){
 
-		LOGGER.info("Deleting user-->");
+		LOGGER.info("Deleting Librarian-->");
 		try {
-			Optional<User> userObj = userService.getUserById(id);
-			if(userObj.isPresent()) {
-				userService.deleteUser(id);
-				LOGGER.info("User with user id - {}, deleted successfully", id);
-				return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+			Optional<User> librarianObj = userService.getLibrarianById(id);
+			if(librarianObj.isPresent()) {
+				userService.deleteLibrarian(id);
+				LOGGER.info("Librarian with id - {}, deleted successfully", id);
+				return new ResponseEntity<>("Librarian deleted successfully", HttpStatus.OK);
 			}else {
 				LOGGER.info("Unable to find user record with id: {}", id);
 				return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
