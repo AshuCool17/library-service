@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<Librarian> getLibrarianById(long id) throws UserNotFoundException {
-		return librarianDao.findById();
+		return librarianDao.findById(id);
 	}
 
 }
