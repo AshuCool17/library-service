@@ -180,8 +180,8 @@ public class UserController {
 				LOGGER.info("Librarian with id - {}, deleted successfully", id);
 				return new ResponseEntity<>("Librarian deleted successfully", HttpStatus.OK);
 			}else {
-				LOGGER.info("Unable to find user record with id: {}", id);
-				return new ResponseEntity<>("Unable to find user record with id: " + id, HttpStatus.NOT_FOUND);
+				LOGGER.info("Unable to find Librarian record with id: {}", id);
+				return new ResponseEntity<>("Unable to find Librarian record with id: " + id, HttpStatus.NOT_FOUND);
 			}
 		}catch(UserNotFoundException | UserException e) {
 			LOGGER.error("Exception - " + e.getMessage());
