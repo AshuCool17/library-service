@@ -63,8 +63,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void deleteLibrarian(Librarian librarian) throws UserException {
-		librarianDao.delete(librarian);
+	public void deleteLibrarian(long id) throws UserException {
+		librarianDao.deleteById(id);
 	}
 
 	@Override
