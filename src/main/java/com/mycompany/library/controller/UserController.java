@@ -174,7 +174,7 @@ public class UserController {
 
 		LOGGER.info("Deleting Librarian-->");
 		try {
-			Optional<User> librarianObj = userService.getLibrarianById(id);
+			Optional<Librarian> librarianObj = userService.getLibrarianById(id);
 			if(librarianObj.isPresent()) {
 				userService.deleteLibrarian(id);
 				LOGGER.info("Librarian with id - {}, deleted successfully", id);
