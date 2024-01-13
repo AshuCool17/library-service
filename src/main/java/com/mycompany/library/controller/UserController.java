@@ -188,5 +188,25 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@PutMapping(value = "/updateLibrarian")
+	public ResponseEntity<String> updateLibrarian(@RequestBody User user){
+
+		LOGGER.info("Updating user-->");
+		try{
+			Optional<User> userObj = userService.getUserById(user.getId());
+			if(userObj.isPresent()) {
+				User updatedUser = userService.updateUser(user);
+				LOGGER.info("User with user id - {}, updated uccessfully", updatedUser.getId());
+				return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
+			}else {
+				LOGGER.info("Unable to find user record with id: {}" + user.getId());
+				return new ResponseEntity<>("Unable to find user record with id:" + user.getId(), HttpStatus.NOT_FOUND);
+			}
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }
