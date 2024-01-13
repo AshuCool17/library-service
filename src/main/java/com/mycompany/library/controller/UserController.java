@@ -190,11 +190,11 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/updateLibrarian")
-	public ResponseEntity<String> updateLibrarian(@RequestBody User user){
+	public ResponseEntity<String> updateLibrarian(@RequestBody Librarian librarian){
 
 		LOGGER.info("Updating librarian Object-->");
 		try{
-			Optional<User> userObj = userService.getUserById(user.getId());
+			Optional<User> userObj = userService.getLibrarianById(librarian.getId());
 			if(userObj.isPresent()) {
 				User updatedUser = userService.updateUser(user);
 				LOGGER.info("User with user id - {}, updated uccessfully", updatedUser.getId());
