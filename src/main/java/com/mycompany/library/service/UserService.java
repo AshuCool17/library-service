@@ -34,5 +34,7 @@ public interface UserService {
 	Optional<Librarian> getLibrarianById(long id) throws UserNotFoundException;//retrieve Librarian details based upon id
 
 	void deleteLibrarian(long id) throws UserException;//delete librarian
+
+	User updateLibrarian(Optional<Librarian> userObj);
 	
 }
