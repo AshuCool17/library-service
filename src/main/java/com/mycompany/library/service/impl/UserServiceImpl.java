@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService {
 		return librarianDao.findById(id);
 	}
 
+	@Override
+	public Librarian updateLibrarian(Librarian librarian) throws UserException{
+		return librarianDao.save(librarian);
+	}
+
 }
