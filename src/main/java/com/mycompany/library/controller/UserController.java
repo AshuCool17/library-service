@@ -194,14 +194,14 @@ public class UserController {
 
 		LOGGER.info("Updating librarian Object-->");
 		try{
-			Optional<Librarian> userObj = userService.getLibrarianById(librarian.getId());
-			if(userObj.isPresent()) {
-				User updatedUser = userService.updateLibrarian(userObj);
-				LOGGER.info("User with user id - {}, updated uccessfully", updatedUser.getId());
-				return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
+			Optional<Librarian> librarianObj = userService.getLibrarianById(librarian.getId());
+			if(librarianObj.isPresent()) {
+				Librarian librarianUser = userService.updateLibrarian(librarianObj);
+				LOGGER.info("Librarian with id - {}, updated successfully", librarianUser.getId());
+				return new ResponseEntity<>("Librarian record updated successfully", HttpStatus.OK);
 			}else {
-				LOGGER.info("Unable to find user record with id: {}" + userObj.getId());
-				return new ResponseEntity<>("Unable to find user record with id:" + userObj.getId(), HttpStatus.NOT_FOUND);
+				LOGGER.info("Unable to find Librarian record with id: {}" + librarian.getId());
+				return new ResponseEntity<>("Unable to find user record with id:" + librarian.getId(), HttpStatus.NOT_FOUND);
 			}
 		}catch(UserNotFoundException e) {
 			LOGGER.error("Exception - " + e.getMessage());
