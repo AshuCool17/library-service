@@ -35,6 +35,6 @@ public interface UserService {
 
 	void deleteLibrarian(long id) throws UserException;//delete librarian
 
-	User updateLibrarian(Optional<Librarian> userObj);
+	Librarian updateLibrarian(Optional<Librarian> userObj);
 	
 }
