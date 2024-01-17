@@ -174,8 +174,8 @@ public class UserController {
 
 		LOGGER.info("Deleting Librarian-->");
 		try {
-			Optional<Librarian> librarianObj = userService.getLibrarianById(id);
-			if(librarianObj.isPresent()) {
+			Librarian librarianObj = userService.getLibrarianById(id);
+			if(librarianObj != null) {
 				userService.deleteLibrarian(id);
 				LOGGER.info("Librarian with id - {}, deleted successfully", id);
 				return new ResponseEntity<>("Librarian deleted successfully", HttpStatus.OK);
@@ -194,11 +194,16 @@ public class UserController {
 
 		LOGGER.info("Updating librarian Object-->");
 		try{
-			Optional<Librarian> librarianObj = userService.getLibrarianById(librarian.getId());
-			if(librarianObj.isPresent()) {
-				Librarian librarianUser = userService.updateLibrarian(librarianObj);
-				LOGGER.info("Librarian with id - {}, updated successfully", librarianUser.getId());
-				return new ResponseEntity<>("Librarian record updated successfully", HttpStatus.OK);
+			Librarian librarianObj = userService.getLibrarianById(librarian.getId());
+			if(librarianObj != null) {
+				Librarian librarianUser;
+				try {
+					librarianUser = userService.updateLibrarian(librarianObj);
+					LOGGER.info("Librarian with id - {}, updated successfully", librarianUser.getId());
+					return new ResponseEntity<>("Librarian record updated successfully", HttpStatus.OK);
+				} catch (UserException e) {
+					LOGGER.error("Exception - " + e.getMessage());
+				}
 			}else {
 				LOGGER.info("Unable to find Librarian record with id: {}" + librarian.getId());
 				return new ResponseEntity<>("Unable to find user record with id:" + librarian.getId(), HttpStatus.NOT_FOUND);
