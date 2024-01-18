@@ -23,7 +23,7 @@ public interface UserService {
 
 	User updateUser(User user);//update user
 
-	Optional<User> getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
+	User getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
 
 	List<User> getAllUsers() throws UserNotFoundException;//retrieve all users
 
