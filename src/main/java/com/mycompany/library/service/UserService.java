@@ -23,7 +23,7 @@ public interface UserService {
 
 	User updateUser(User user);//update user
 
-	User getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
+	Optional<User> getUserById(long id) throws UserNotFoundException;//retrieve user details based upon id
 
 	List<User> getAllUsers() throws UserNotFoundException;//retrieve all users
 
@@ -31,7 +31,7 @@ public interface UserService {
 
 	Librarian addLibrarian(Librarian librarian) throws UserException;//add new librarian
 
-	Librarian getLibrarianById(long id) throws UserNotFoundException;//retrieve Librarian details based upon id
+	Optional<Librarian> getLibrarianById(long id) throws UserNotFoundException;//retrieve Librarian details based upon id
 
 	void deleteLibrarian(long id) throws UserException;//delete librarian
 
