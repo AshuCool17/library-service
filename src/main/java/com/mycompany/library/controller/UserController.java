@@ -174,7 +174,7 @@ public class UserController {
 
 		LOGGER.info("Deleting Librarian-->");
 		try {
-			Librarian librarianObj = userService.getLibrarianById(id);
+			Optional<Librarian> librarianObj = userService.getLibrarianById(id);
 			if(librarianObj != null) {
 				userService.deleteLibrarian(id);
 				LOGGER.info("Librarian with id - {}, deleted successfully", id);
@@ -194,11 +194,11 @@ public class UserController {
 
 		LOGGER.info("Updating librarian Object-->");
 		try{
-			Librarian librarianObj = userService.getLibrarianById(librarian.getId());
+			Optional<Librarian> librarianObj = userService.getLibrarianById(librarian.getId());
 			if(librarianObj != null) {
 				Librarian librarianUser;
 				try {
-					librarianUser = userService.updateLibrarian(librarianObj);
+					librarianUser = userService.updateLibrarian(librarian);
 					LOGGER.info("Librarian with id - {}, updated successfully", librarianUser.getId());
 					return new ResponseEntity<>("Librarian record updated successfully", HttpStatus.OK);
 				} catch (UserException e) {
