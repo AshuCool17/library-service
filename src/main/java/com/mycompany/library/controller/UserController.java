@@ -164,9 +164,14 @@ public class UserController {
 	@GetMapping(value = "/getUserForBookIssued")
 	public ResponseEntity<User> getUserForBookIssued(@RequestBody String bookName){
 		User user = userService.getUserForBookIssued(bookName);
-		String userCountry = user.getCountry();
-		LOGGER.info("user country " + userCountry);
-		return new ResponseEntity<>(HttpStatus.OK);
+		if(null != user) {
+			String userCountry = user.getCountry();
+			LOGGER.info("user country " + userCountry);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}else {
+			LOGGER.info("user not found " + user.getName());
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
 	}
 	
 	@DeleteMapping(value = "/deleteLibrarian")
