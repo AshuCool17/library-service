@@ -220,7 +220,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/login")
-	public ResponseEntity<String> login(String userName, String encryptedPwd){
+	public ResponseEntity<String> login(String userName, String password){
 		LOGGER.info("Login");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
