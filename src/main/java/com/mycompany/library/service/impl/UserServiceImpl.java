@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
 		return librarianDao.save(librarian);
 	}
 
+	@Override
+	public void login(String userName, String password) {
+		
+	}
+
 }
