@@ -222,6 +222,7 @@ public class UserController {
 	@GetMapping(value = "/login")
 	public ResponseEntity<String> login(String userName, String password){
 		LOGGER.info("Login");
+		userService.login(userName, password);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
