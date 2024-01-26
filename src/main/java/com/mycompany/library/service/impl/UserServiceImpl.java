@@ -78,8 +78,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void login(String userName, String password) {
-		LOGGER.info
+	public void login(String userName, String password) throws UserNotFoundException{
+		//login service
 	}
 
 }
