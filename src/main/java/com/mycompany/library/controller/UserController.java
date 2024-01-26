@@ -225,5 +225,24 @@ public class UserController {
 		userService.login(userName, password);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/getUserByName")
+	public ResponseEntity<Optional<User>> getUserByName(@RequestParam String name){
+
+		LOGGER.info("Getting user info-->");
+		try{
+			Optional<User> userObj = userService.getUserByName(name);
+			if(userObj.isPresent()) {
+				LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
+				return new ResponseEntity<>(userObj, HttpStatus.OK);
+			} else {
+				LOGGER.info("Unable to find user record with id: {}", id);
+				return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+			}
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 }
