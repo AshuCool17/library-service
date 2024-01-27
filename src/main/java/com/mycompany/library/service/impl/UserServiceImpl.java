@@ -78,8 +78,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void login(String userName, String password) throws UserNotFoundException{
+	public void login(String userName, String password){
 		//login service
+	}
+
+	@Override
+	public Optional<User> getUserByName(String name) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }
