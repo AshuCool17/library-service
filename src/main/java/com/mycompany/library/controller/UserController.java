@@ -233,10 +233,10 @@ public class UserController {
 		try{
 			Optional<User> userObj = userService.getUserByName(name);
 			if(userObj.isPresent()) {
-				LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
+				LOGGER.info("User details with user name - {}, {}", name, userObj.toString());
 				return new ResponseEntity<>(userObj, HttpStatus.OK);
 			} else {
-				LOGGER.info("Unable to find user record with id: {}", id);
+				LOGGER.info("Unable to find user record with name: {}", name);
 				return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 			}
 		}catch(UserNotFoundException e) {
