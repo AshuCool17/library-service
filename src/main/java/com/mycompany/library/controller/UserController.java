@@ -230,17 +230,13 @@ public class UserController {
 	public ResponseEntity<Optional<User>> getUserByName(@RequestParam String name){
 
 		LOGGER.info("Getting user info-->");
-		try{
-			Optional<User> userObj = userService.getUserByName(name);
-			if(userObj.isPresent()) {
-				LOGGER.info("User details with user name - {}, {}", name, userObj.toString());
-				return new ResponseEntity<>(userObj, HttpStatus.OK);
-			} else {
-				LOGGER.info("Unable to find user record with name: {}", name);
-				return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
-			}
-		}catch(UserNotFoundException e) {
-			LOGGER.error("Exception - " + e.getMessage());
+		Optional<User> userObj = userService.getUserByName(name);
+		if(userObj.isPresent()) {
+			LOGGER.info("User details with user name - {}, {}", name, userObj.toString());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		} else {
+			LOGGER.info("Unable to find user record with name: {}", name);
+			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
