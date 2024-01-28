@@ -83,9 +83,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<User> getUserByName(String name) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Optional<User> getUserByName(String name){
+		return userDao.getUserByName(name);
 	}
 
 }
