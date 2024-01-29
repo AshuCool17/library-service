@@ -169,7 +169,7 @@ public class UserController {
 			LOGGER.info("user country " + userCountry);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}else {
-			LOGGER.info("user not found " + user.getName());
+			LOGGER.info("user not found");
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 	}
