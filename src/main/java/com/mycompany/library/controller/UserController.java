@@ -238,7 +238,6 @@ public class UserController {
 			LOGGER.info("Unable to find user record with name: {}", name);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }
