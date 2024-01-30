@@ -93,10 +93,10 @@ public class LibraryServiceImpl implements LibraryService {
 	public List<String> upcomingBooks() throws LibraryException {
 		List<String> books = new ArrayList<>();
 		LOGGER.info("Upcoming books -->");
-		books.add("A");
-		books.add("B");
-		books.add("C");
-		books.add("D");
+		books.add("Wings of Fire");
+		books.add("3 Mistakes of My Life");
+		books.add("The Secret");
+		books.add("How to Dream Big");
 		LOGGER.info("all books-> " + books.toString());
 		return books;
 	}
