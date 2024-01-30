@@ -18,7 +18,7 @@ import com.mycompany.library.model.User;
 @Repository
 public interface UserDao extends JpaRepository<User, Long>{
 
-	@Query(value = "select user.name from book")
+	@Query(value = "select user from book where bookname: bookname")
 	public User getUserForBookIssued(String bookName);
 
 	@Query(value = "select user from users where name: name")
