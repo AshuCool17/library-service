@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
+import com.mycompany.library.model.User;
 import com.mycompany.library.service.LibraryService;
 
 /**
@@ -233,6 +234,20 @@ public class LibraryController {
 			LOGGER.error("exception -> "+e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/getLibrarianByName")
+	public ResponseEntity<Optional<User>> getUserByName(@RequestParam String name){
+
+		LOGGER.info("Getting user info-->");
+		Optional<User> userObj = librarianService.getLibrarianByName(name);
+		if(userObj.isPresent()) {
+			LOGGER.info("User details with user name - {}, {}", name, userObj.toString());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		} else {
+			LOGGER.info("Unable to find user record with name: {}", name);
+			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+		}
 	}
 	
 }
