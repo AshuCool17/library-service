@@ -23,6 +23,7 @@ import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
 import com.mycompany.library.model.User;
+import com.mycompany.library.service.LibrarianService;
 import com.mycompany.library.service.LibraryService;
 
 /**
@@ -33,8 +34,12 @@ import com.mycompany.library.service.LibraryService;
 public class LibraryController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LibraryController.class);
+	
 	@Autowired
 	private LibraryService libraryService;
+	
+	@Autowired
+	private LibrarianService librarianService;
 
 	@PostMapping(value = "/addBook")
 	public ResponseEntity<Book> addBooksToLibrary(@RequestBody Book book) {
