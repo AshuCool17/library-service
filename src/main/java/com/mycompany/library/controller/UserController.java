@@ -239,5 +239,19 @@ public class UserController {
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@GetMapping(value = "/getUserByBookName")
+	public ResponseEntity<Optional<User>> getUserByBookName(@RequestParam String bookName){
+
+		LOGGER.info("Getting user info-->");
+		Optional<User> userObj = userService.getUserByBookName(bookName);
+		if(userObj.isPresent()) {
+			LOGGER.info("User details with user name - {}, {}", bookName, userObj.toString());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		} else {
+			LOGGER.info("Unable to find user record with name: {}", name);
+			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+		}
+	}
 
 }
