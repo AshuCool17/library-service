@@ -40,5 +40,7 @@ public interface UserService {
 	void login(String userName, String password);
 
 	Optional<User> getUserByName(String name);//retrieve user for the book issued
+
+	Optional<User> getUserByBookName(String bookName);
 	
 }
