@@ -249,7 +249,7 @@ public class UserController {
 			LOGGER.info("User details with user name - {}, {}", bookName, userObj.toString());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
-			LOGGER.info("Unable to find user record with name: {}", name);
+			LOGGER.info("Unable to find user record with name: {}", bookName);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
