@@ -80,6 +80,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void login(String userName, String password){
 		//login service
+		User user = userDao.getUserwithCreds(userName, password);
+		if(user != null) {
+			user.getName();
+		}
 	}
 
 	@Override
