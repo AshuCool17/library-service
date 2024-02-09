@@ -37,7 +37,7 @@ public interface UserService {
 
 	Librarian updateLibrarian(Librarian librarian) throws UserException;
 
-	void login(String userName, String password);
+	boolean login(String userName, String password);
 
 	Optional<User> getUserByName(String name);//retrieve user for the book issued
 
