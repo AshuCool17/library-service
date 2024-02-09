@@ -78,12 +78,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void login(String userName, String password){
+	public boolean login(String userName, String password){
 		//login service
 		User user = userDao.getUserwithCreds(userName, password);
-		if(user != null) {
-			user.getName();
-		}
+		if(user != null)
+			return true;
+		else
+			return false;
 	}
 
 	@Override
