@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.mycompany.library.model.Librarian;
-import com.mycompany.library.model.User;
 
 public interface LibrarianDao extends JpaRepository<Librarian, Long>{
 
