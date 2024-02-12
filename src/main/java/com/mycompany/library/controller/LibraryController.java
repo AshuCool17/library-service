@@ -255,4 +255,18 @@ public class LibraryController {
 		}
 	}
 	
+	@GetMapping(value = "/getLibrarianByName")
+	public ResponseEntity<Optional<User>> getUserByName(@RequestParam String name){
+
+		LOGGER.info("Getting user info-->");
+		Optional<User> userObj = librarianService.getLibrarianByName(name);
+		if(userObj.isPresent()) {
+			LOGGER.info("User details with user name - {}, {}", name, userObj.toString());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		} else {
+			LOGGER.info("Unable to find user record with name: {}", name);
+			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+		}
+	}
+	
 }

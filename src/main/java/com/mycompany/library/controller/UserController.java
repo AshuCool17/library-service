@@ -222,9 +222,11 @@ public class UserController {
 	@GetMapping(value = "/login")
 	public ResponseEntity<String> login(String userName, String password){
 		LOGGER.info("Login");
-		if(userService.login(userName, password))
+		
+		if(userService.login(userName, password)) {
+			LOGGER.info("Successful login");
 			return new ResponseEntity<>("Username successfully validated", HttpStatus.OK);
-		else
+		}else
 			return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
@@ -238,6 +240,20 @@ public class UserController {
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
 			LOGGER.info("Unable to find user record with name: {}", name);
+			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping(value = "/getUserByBookName")
+	public ResponseEntity<Optional<User>> getUserByBookName(@RequestParam String bookName){
+
+		LOGGER.info("Getting user info-->");
+		Optional<User> userObj = userService.getUserByBookName(bookName);
+		if(userObj.isPresent()) {
+			LOGGER.info("User details with user name - {}, {}", bookName, userObj.toString());
+			return new ResponseEntity<>(userObj, HttpStatus.OK);
+		} else {
+			LOGGER.info("Unable to find user record with name: {}", bookName);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
