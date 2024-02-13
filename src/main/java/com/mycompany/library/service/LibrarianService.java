@@ -8,4 +8,6 @@ public interface LibrarianService {
 
 	Optional<User> getLibrarianByName(String name);
 
+	Optional<User> getLibrarianById(long id);
+
 }
