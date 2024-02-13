@@ -264,7 +264,7 @@ public class LibraryController {
 			LOGGER.info("User details with user id - {}, {}", id, userObj.toString());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
-			LOGGER.info("Unable to find user record with name: {}", name);
+			LOGGER.info("Unable to find user record with id: {}", id);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
