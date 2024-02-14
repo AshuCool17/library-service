@@ -42,5 +42,7 @@ public interface UserService {
 	Optional<User> getUserByName(String name);//retrieve user for the book issued
 
 	Optional<User> getUserByBookName(String bookName);
+
+	Optional<User> getUserByBookId(long bookId);
 	
 }
