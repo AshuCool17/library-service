@@ -258,16 +258,16 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping(value = "/getUserByBookName")
-	public ResponseEntity<Optional<User>> getUserByBookName(@RequestParam String bookName){
+	@GetMapping(value = "/getUserByBookId")
+	public ResponseEntity<Optional<User>> getUserByBookId(@RequestParam long bookId){
 
 		LOGGER.info("Getting user info-->");
-		Optional<User> userObj = userService.getUserByBookName(bookName);
+		Optional<User> userObj = userService.getUserByBookId(bookId);
 		if(userObj.isPresent()) {
-			LOGGER.info("User details with user name - {}, {}", bookName, userObj.toString());
+			LOGGER.info("User details with user name - {}, {}", bookId, userObj.toString());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
-			LOGGER.info("Unable to find user record with name: {}", bookName);
+			LOGGER.info("Unable to find user record with name: {}", bookId);
 			return new ResponseEntity<>(userObj, HttpStatus.NOT_FOUND);
 		}
 	}
