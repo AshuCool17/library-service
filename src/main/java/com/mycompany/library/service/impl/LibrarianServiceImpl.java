@@ -16,6 +16,13 @@ public class LibrarianServiceImpl implements LibrarianService {
 
 	@Override
 	public Optional<User> getLibrarianByName(String name) {
+		//to-do
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<User> getLibrarianById(long id) {
+		//to-do
 		return Optional.empty();
 	}
 
