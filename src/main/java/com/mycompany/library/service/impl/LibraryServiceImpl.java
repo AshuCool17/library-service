@@ -126,4 +126,10 @@ public class LibraryServiceImpl implements LibraryService {
 		}
 	}
 
+	@Override
+	public List<User> getAllLibrarian() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
