@@ -219,6 +219,23 @@ public class UserController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/getAllLibrarian")
+	public ResponseEntity<List<User>> getAllLibrarian(){
+
+		LOGGER.info("Getting all librarian info-->");
+		try {
+			List<User> users = libraryService.getAllLibrarian();
+			if(users.size() == 0)
+				LOGGER.info("No records found");
+			else
+				LOGGER.info("Successfully retrieved all users info");
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		}catch(UserNotFoundException e) {
+			LOGGER.error("Exception - " + e.getMessage());
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 	@GetMapping(value = "/login")
 	public ResponseEntity<String> login(String userName, String password){
 		LOGGER.info("Login");
@@ -264,7 +281,7 @@ public class UserController {
 		LOGGER.info("Getting user info-->");
 		Optional<User> userObj = userService.getUserByBookId(bookId);
 		if(userObj.isPresent()) {
-			LOGGER.info("User details with user name - {}, {}", bookId, userObj.toString());
+			LOGGER.info("User details with user id - {}, {}", bookId, userObj.toString());
 			return new ResponseEntity<>(userObj, HttpStatus.OK);
 		} else {
 			LOGGER.info("Unable to find user record with name: {}", bookId);
