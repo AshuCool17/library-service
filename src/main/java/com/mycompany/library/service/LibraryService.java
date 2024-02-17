@@ -9,6 +9,7 @@ import java.util.Optional;
 import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
+import com.mycompany.library.model.User;
 
 /**
  * @author Ashutosh
@@ -35,4 +36,6 @@ public interface LibraryService {
 	Integer getNumberOfCopies(String bookName) throws LibraryException;//retrieves number of copies available
 
 	void payFine(String bookName) throws LibraryException;//defaulter pays fine and clears the due
+
+	List<User> getAllLibrarian();
 }
