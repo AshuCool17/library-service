@@ -101,5 +101,10 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> getUserByBookId(long bookId) {
 		return userDao.getUserByBookId();
 	}
+	
+	@Override
+	public List<Librarian> getAllLibrarian() {
+		return librarianDao.findAll();
+	}
 
 }
