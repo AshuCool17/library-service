@@ -37,5 +37,4 @@ public interface LibraryService {
 
 	void payFine(String bookName) throws LibraryException;//defaulter pays fine and clears the due
 
-	List<User> getAllLibrarian();
 }
