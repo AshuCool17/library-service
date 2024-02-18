@@ -36,6 +36,8 @@ public interface UserService {
 	void deleteLibrarian(long id) throws UserException;//delete librarian
 
 	Librarian updateLibrarian(Librarian librarian) throws UserException;
+	
+	List<Librarian> getAllLibrarian();
 
 	boolean login(String userName, String password);
 
