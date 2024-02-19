@@ -37,7 +37,7 @@ public interface UserService {
 
 	Librarian updateLibrarian(Librarian librarian) throws UserException;
 	
-	List<Librarian> getAllLibrarian();
+	List<Librarian> getAllLibrarian() throws UserNotFoundException;//retrieve all users
 
 	boolean login(String userName, String password);
 
