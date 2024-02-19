@@ -223,14 +223,20 @@ public class UserController {
 	public ResponseEntity<List<Librarian>> getAllLibrarian(){
 
 		LOGGER.info("Getting all librarian info-->");
-		List<Librarian> users = userService.getAllLibrarian();
-		if(users.size() == 0) {
-			LOGGER.info("No records found");
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}else
-			LOGGER.info("Successfully retrieved all users info");
-		return new ResponseEntity<>(users, HttpStatus.OK);
-		
+		List<Librarian> users;
+		try {
+			users = userService.getAllLibrarian();
+			if(users.size() == 0) {
+				LOGGER.info("No records found");
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}else {
+				LOGGER.info("Successfully retrieved all users info");
+				return new ResponseEntity<>(users, HttpStatus.OK);
+			}
+		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/login")
