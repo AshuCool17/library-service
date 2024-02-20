@@ -9,7 +9,6 @@ import java.util.Optional;
 import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
-import com.mycompany.library.model.User;
 
 /**
  * @author Ashutosh
