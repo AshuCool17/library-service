@@ -13,7 +13,6 @@ import com.mycompany.library.dao.UserDao;
 import com.mycompany.library.exception.BookNotFoundException;
 import com.mycompany.library.exception.LibraryException;
 import com.mycompany.library.model.Book;
-import com.mycompany.library.model.Librarian;
 import com.mycompany.library.model.User;
 import com.mycompany.library.service.LibraryService;
 
