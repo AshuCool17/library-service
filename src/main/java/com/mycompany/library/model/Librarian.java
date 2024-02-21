@@ -23,4 +23,6 @@ public class Librarian {
 	private String password;
 
 	private String role;
+	
+	private boolean isActive;
 }
