@@ -38,5 +38,7 @@ public class User {
 	private String country;
 	
 	private List<String> books;
+	
+	private boolean isActive;
 
 }
